@@ -18,17 +18,17 @@ email: akshay.jain.7983@hotmail.com
 description: Coding for fun
 # twitter_username: username
 github_username: funofprograming
+minimal_mistakes_skin: mint
 search: true
 
 # Build settings
 markdown: GFM
-remote_theme: pages-themes/modernist@v0.2.0
+remote_theme: mmistakes/minimal-mistakes
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-show_downloads: false
 
 include:
   - _pages
@@ -51,8 +51,8 @@ plugins:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
+  - jemoji
   - jekyll-include-cache
-  - jekyll-remote-theme
 
 author:
   name   : "Akshay Jain"
