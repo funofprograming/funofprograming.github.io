@@ -221,3 +221,17 @@ public class TestApplicationContext{
     }
 }
 ```
+
+
+## Compatibility matrix
+
+| Application Context Util |  Java  | Kotlin-Std | Kotlin-Coroutines | 
+|:------------------------:|:------:|:----------:|:-----------------:|
+|          1.0.0           |   21   |  2.1.10    |     1.10.1        |
+
+## License
+
+Application context util is is released under version 2.0 of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
+
+## Github
+[application-context-util](https://github.com/funofprograming/application-context-util)
