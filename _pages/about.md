@@ -1,7 +1,8 @@
 ---
 permalink: /about/
 title: "About"
-layout: home
+layout: single
+classes: wide
 ---
 
 ![Akshay](/assets/images/Akshay_small_07112021.jpg)
@@ -10,11 +11,29 @@ layout: home
 
 ## Background
 
-Born and brought up in small town of Meerut in India near to national capital New Delhi. I graduated as an IT Engineer from MIET college in 2006. I am currently working in Noida as a software engineer.
+Born and brought up in small town of Meerut in India near to national capital New Delhi. 
+
+I graduated as an IT Engineer from MIET college in 2006 and then did my M. Tech from BITS Pilani in 2024. 
+
+I am currently working in Noida as a software engineer.
 
 ## Technologies of Interest
 
+- System architecture
+- Problem solving
 - Algorithms
 - Java
+- Spring
 - Machine Learning
 - Spark
+- Kotlin
+
+## Domains of Interest
+
+- Finance
+  - Payments
+  - Banking
+  - Capital markets
+  - Index
+- Telecom
+- Retail
