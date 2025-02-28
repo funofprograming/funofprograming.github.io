@@ -1,0 +1,28 @@
+{
+  "name": "funofprograming.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funofprograming/funofprograming.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/funofprograming/funofprograming.github.io/issues"
+  },
+  "homepage": "https://github.com/funofprograming/funofprograming.github.io#readme",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "@mdit/plugin-tab": "^0.16.0",
+    "markdown-it": "^14.1.0"
+  }
+}

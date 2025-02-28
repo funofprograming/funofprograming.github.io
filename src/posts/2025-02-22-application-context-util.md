@@ -1,11 +1,9 @@
 ---
 title: "Application Context"
-excerpt_separator: "<!--more-->"
-categories:
-  - Blog
 tags:
+  - posts
   - application-context-util
-  - Kotlin
+date: 2025-02-22
 ---
 ## Overview
 
@@ -37,6 +35,10 @@ Check for latest versions here: [Releases](https://github.com/funofprograming/ap
 
 Globally available context in all threads/coroutine
 
+::: tabs
+
+@tab Kotlin
+
 ```kotlin
 import io.github.funofprograming.context.impl.*
 
@@ -59,6 +61,39 @@ val def2 = async {
 
 println(valueSetInThread1 == def2.await())
 ```
+
+@tab Java
+
+```java
+import io.github.funofprograming.context.impl.*;
+import java.util.concurrent.*;
+
+public class TestGlobalApplicationContext{
+    public static void main(String[] args) {
+        String contextName = "TestGlobalApplicationContext";
+        Key<String> validKey = Key.Companion.of("ValidKey", String.class);
+        ThreadPoolExecutor executorService = new ThreadPoolExecutor(1, 1, 1L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
+        String valueSetInThread1 = "Value T1";
+
+        CompletableFuture.runAsync(()->{
+            ApplicationContext globalContext = ApplicationContextHoldersKt.getGlobalContext(contextName);
+            globalContext.add(validKey, valueSetInThread1);
+        });
+
+        Thread.sleep(1000);
+
+        CompletableFuture<String> future2 = CompletableFuture.supplyAsync(()->{
+            ApplicationContext globalContext = ApplicationContextHoldersKt.getGlobalContext(contextName);
+            return globalContext.fetch(validKey);
+        });
+        Thread.sleep(1000);
+        
+        System.out.println(valueSetInThread1.equals(future2.get()));
+    }    
+}
+```
+
+:::
 
 Above snippet prints:
 
