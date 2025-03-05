@@ -21,7 +21,9 @@ jobs:
           cache: 'npm'
       
       - name: Build FoP using Eleventy
-        run: npm run install
+        run: |
+          npm install
+          npm run publish
       
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

@@ -4,11 +4,9 @@
   "scripts": {
     "clean": "rimraf _site",
     "build": "npx @11ty/eleventy",
-    "debugserve": "cross-env DEBUG=Eleventy* npx @11ty/eleventy --serve",
     "serve": "npx @11ty/eleventy --serve",
-    "debug": "npm run clean && npm run debugserve",
     "start": "npm run clean && npm run serve",
-    "install": "npm run clean && npm run build"
+    "publish": "npm run clean && npm run build"
   },
   "author": "Akshay Jain",
   "license": "Apache-2.0",
