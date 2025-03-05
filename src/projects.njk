@@ -1,0 +1,18 @@
+---
+layout: project.njk
+title: Projects
+description: "Update from my projects"
+pagination:
+  data: collections.projects
+  size: 10
+  reverse: false
+testdata:
+ - item1
+ - item2
+permalink: "projects/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
+---
+{%- for item in pagination.items %}
+<h3><a href="{{item.url}}">{{item.data.title}}</a></h3>
+<p>{{item.data.description}}</p>
+<hr/>
+{% endfor -%}

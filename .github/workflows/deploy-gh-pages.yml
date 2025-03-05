@@ -1,0 +1,31 @@
+name: Publish FoP
+run-name: Publish FoP
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.14.x'
+          cache: 'npm'
+      
+      - name: Build FoP using Eleventy
+        run: |
+          npm install
+          npm run publish
+      
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
