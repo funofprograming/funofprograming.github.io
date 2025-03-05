@@ -1,0 +1,5 @@
+{% for tag in tagslist | reverse %}
+<h3>
+<a href="{{ tag.url }}" class="postlist-link">{{ tag.data.title }}</a>
+</h3><hr/>
+{% endfor %}

@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{title or site.title}}</title>
+<meta content="{{title or site.title}}" property="og:title">
+<meta content="{{title or site.title}}" name="twitter:title">
+<meta content="{{title or site.title}}" name="title">
+<meta content="{{title or site.title}}" property="og:site_name">
+<meta content="{{description or site.description}}" name="description">
+<meta content="{{description or site.description}}" property="facebook:description">
+<meta content="{{description or site.description}}" property="og:description">
+<meta content="{{description or site.description}}" name="twitter:description">
+{# <link href="{{site.favicon}}" rel="icon" type="image/x-icon"> #}
+<meta property="og:type" content="website">
+<link rel="canonical" href="{{site.url}}{{page.url}}">
+<meta name="language" content="{{site.language}}">
+<meta name="locale" content="{{site.locale}}">
+<meta property="og:locale" content="{{site.locale}}">
+<meta name="generator" content="{{ eleventy.generator }}"> 
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"{{site.description}}","headline":"{{site.title}} - {{site.description}}","name":"{{site.title}}","url":"{{site.url}}{{page.url}}"}</script>
+<meta name="generator" content="{{ eleventy.generator }}">
+<meta name="color-scheme" content="light dark" />
+<link rel="stylesheet" href="{{ site.indexcss }}"/>
+<link rel="stylesheet" href="{{ site.jqueryuicss }}"/>
+<link rel="stylesheet" href="{{ site.jqueryuistructurecss }}"/>
+<link rel="stylesheet" href="{{ site.jqueryuithemecss }}"/>
+<link rel="stylesheet" href="{{ site.prismcss }}"/>
+<link rel="stylesheet" href="{{ site.picocss }}"/>
+<link rel="stylesheet" href="{{ site.messageboxcss }}"/>
+<script type="module">
+    import "{{ site.islandjs }}";
+</script>
+<script type="text/javascript" src="{{ site.jqueryjs }}"></script>
+<script type="text/javascript" src="{{ site.jqueryuijs }}"></script>
+<script type="text/javascript" src="{{ site.headinganchorsjs }}"></script>
+<script type="text/javascript" src="{{ site.lampjs }}"></script>
+{% include "partials/style.njk" %}

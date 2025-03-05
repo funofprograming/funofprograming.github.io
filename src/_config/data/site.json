@@ -1,0 +1,48 @@
+{
+	"title": "Fun of Programing",
+	"url": "https://funofprograming.github.io/",
+	"language": "en",
+	"locale": "en_IN",
+	"description": "Fun projects and problems with coding",
+	"author": {
+		"name": "Akshay Jain",
+		"email": "akshay.jain.7983@hotmail.com",
+		"url": "https://funofprograming.github.io/about"
+	},
+	"color": "primary",
+	"nav_title": "Fun of Programing",
+	"navbar": [
+		{
+			"nav": "Home",
+			"link": "/"
+		},
+		{
+			"nav": "Articles",
+			"link": "/articles/"
+		},
+		{
+			"nav": "Projects",
+			"link": "/projects/"
+		},
+		{
+			"nav": "About",
+			"link": "/about/"
+		},
+		{
+			"nav": "Search",
+			"link": "/search/"
+		}
+	],
+	"indexcss": "/static/css/index.css",
+	"jqueryuicss": "/static/css/jquery-ui.min.css",
+    "jqueryuistructurecss": "/static/css/jquery-ui.structure.min.css",
+    "jqueryuithemecss": "/static/css/jquery-ui.theme.min.css",
+    "prismcss": "/static/css/prism.css",
+	"picocss": "/static/css/pico.min.css",
+	"messageboxcss": "/static/css/message-box.css",
+    "jqueryjs": "/static/js/jquery.min.js",
+    "jqueryuijs": "/static/js/jquery-ui.min.js",
+    "islandjs": "/static/js/is-land.js",
+	"headinganchorsjs": "/static/js/heading-anchors.js",
+	"lampjs": "/static/js/lamp.js"
+}

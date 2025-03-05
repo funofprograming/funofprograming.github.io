@@ -1,9 +1,11 @@
 ---
 title: "Application Context"
+description: " "
+excerpt_separator: "<!--more-->"
 tags:
-  - posts
   - application-context-util
-date: 2025-02-22
+  - Kotlin
+  - Java
 ---
 ## Overview
 
@@ -35,10 +37,8 @@ Check for latest versions here: [Releases](https://github.com/funofprograming/ap
 
 Globally available context in all threads/coroutine
 
-::: tabs
-
-@tab Kotlin
-
+{% tabber "acuTabs1", {"acu-kotlin1":"Kotlin", "acu-java1":"Java"} %}
+{% tab "acu-kotlin1" %}
 ```kotlin
 import io.github.funofprograming.context.impl.*
 
@@ -61,9 +61,9 @@ val def2 = async {
 
 println(valueSetInThread1 == def2.await())
 ```
+{% endtab %} 
 
-@tab Java
-
+{% tab "acu-java1" %}
 ```java
 import io.github.funofprograming.context.impl.*;
 import java.util.concurrent.*;
@@ -92,8 +92,8 @@ public class TestGlobalApplicationContext{
     }    
 }
 ```
-
-:::
+{% endtab %}   
+{% endtabber %}
 
 Above snippet prints:
 
@@ -103,6 +103,8 @@ true
 
 ThreadLocal available context in current thread/coroutine
 
+{% tabber "acuTabs2", {"acu-kotlin2":"Kotlin", "acu-java2":"Java"} %}
+{% tab "acu-kotlin2" %}
 ```kotlin
 import io.github.funofprograming.context.impl.*
 
@@ -128,73 +130,9 @@ println(def2.await() == null)
 println(valueSetInThread1 == def1.await())
 ```
 
-Above snippet prints:
+{% endtab %} 
 
-```text
-true
-true
-```
-
-Also, the context supports restricting keys of context to some predetermined set as follows:
-
-```kotlin
-import io.github.funofprograming.context.impl.*
-
-val contextName: String = "TestApplicationContext"
-val validKey: Key<String> = Key.of("ValidKey", String::class.java)
-val invalidKey: Key<String> = Key.of("InvalidKey", String::class.java)
-val permittedKeys: Set<Key<*>> = setOf(validKey)
-
-val globalContext = getGlobalContext(contextName, permittedKeys)
-globalContext?.add(validKey, valueSetInThread1)
-globalContext?.fetch(invalidKey) //throws InvalidKeyException here since invalidKey is not part of permittedKeys
-
-val localContext = getThreadLocalContext(contextName, permittedKeys)
-localContext?.add(validKey, valueSetInThread1)
-localContext?.fetch(invalidKey) //throws InvalidKeyException here since invalidKey is not part of permittedKeys
-```
-
-### Java code usage
-
-Globally available context in all threads/coroutine
-
-```java
-import io.github.funofprograming.context.impl.*;
-import java.util.concurrent.*;
-
-public class TestGlobalApplicationContext{
-    public static void main(String[] args) {
-        String contextName = "TestGlobalApplicationContext";
-        Key<String> validKey = Key.Companion.of("ValidKey", String.class);
-        ThreadPoolExecutor executorService = new ThreadPoolExecutor(1, 1, 1L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
-        String valueSetInThread1 = "Value T1";
-
-        CompletableFuture.runAsync(()->{
-            ApplicationContext globalContext = ApplicationContextHoldersKt.getGlobalContext(contextName);
-            globalContext.add(validKey, valueSetInThread1);
-        });
-
-        Thread.sleep(1000);
-
-        CompletableFuture<String> future2 = CompletableFuture.supplyAsync(()->{
-            ApplicationContext globalContext = ApplicationContextHoldersKt.getGlobalContext(contextName);
-            return globalContext.fetch(validKey);
-        });
-        Thread.sleep(1000);
-        
-        System.out.println(valueSetInThread1.equals(future2.get()));
-    }    
-}
-```
-
-Above snippet prints:
-
-```text
-true
-```
-
-ThreadLocal available context in current thread/coroutine
-
+{% tab "acu-java2" %}
 ```java
 import io.github.funofprograming.context.impl.*;
 import java.util.concurrent.*;
@@ -224,6 +162,8 @@ public class TestThreadLocalApplicationContext{
     }
 }
 ```
+{% endtab %}   
+{% endtabber %}
 
 Above snippet prints:
 
@@ -234,6 +174,27 @@ true
 
 Also, the context supports restricting keys of context to some predetermined set as follows:
 
+{% tabber "acuTabs3", {"acu-kotlin3":"Kotlin", "acu-java3":"Java"} %}
+{% tab "acu-kotlin3" %}
+```kotlin
+import io.github.funofprograming.context.impl.*
+
+val contextName: String = "TestApplicationContext"
+val validKey: Key<String> = Key.of("ValidKey", String::class.java)
+val invalidKey: Key<String> = Key.of("InvalidKey", String::class.java)
+val permittedKeys: Set<Key<*>> = setOf(validKey)
+
+val globalContext = getGlobalContext(contextName, permittedKeys)
+globalContext?.add(validKey, valueSetInThread1)
+globalContext?.fetch(invalidKey) //throws InvalidKeyException here since invalidKey is not part of permittedKeys
+
+val localContext = getThreadLocalContext(contextName, permittedKeys)
+localContext?.add(validKey, valueSetInThread1)
+localContext?.fetch(invalidKey) //throws InvalidKeyException here since invalidKey is not part of permittedKeys
+```
+{% endtab %} 
+
+{% tab "acu-java3" %}
 ```java
 import io.github.funofprograming.context.impl.*;
 import java.util.concurrent.*;
@@ -256,7 +217,8 @@ public class TestApplicationContext{
     }
 }
 ```
-
+{% endtab %}   
+{% endtabber %}
 
 ## Compatibility matrix
 

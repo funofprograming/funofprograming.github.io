@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="{{ site.language }}">
+<head>
+{% include "partials/seo.njk" %}
+</head>
+<body>
+<a href="#skip" class="skip-to-content contrast" role="button">Skip to main content</a>
+{{content|safe}}
+<hr/>
+<footer>
+    <p><em>Built with <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a></em></p>
+</footer>
+<script type="module" src="{% getBundleFileUrl "js" %}"></script>
+</body>
+</html>

@@ -1,28 +1,32 @@
 {
-  "name": "funofprograming.github.io",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "Fun of Programing",
+  "description": "Fun programing projects or problems",
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy"
+    "clean": "rimraf _site",
+    "build": "npx @11ty/eleventy",
+    "debugserve": "cross-env DEBUG=Eleventy* npx @11ty/eleventy --serve",
+    "serve": "npx @11ty/eleventy --serve",
+    "debug": "npm run clean && npm run debugserve",
+    "start": "npm run clean && npm run serve",
+    "install": "npm run clean && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/funofprograming/funofprograming.github.io.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/funofprograming/funofprograming.github.io/issues"
-  },
-  "homepage": "https://github.com/funofprograming/funofprograming.github.io#readme",
-  "description": "",
+  "author": "Akshay Jain",
+  "license": "Apache-2.0",
   "type": "module",
-  "dependencies": {
+  "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-img": "^6.0.1",
+    "@11ty/eleventy-navigation": "^0.3.5",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-    "@mdit/plugin-tab": "^0.16.0",
-    "markdown-it": "^14.1.0"
+    "@11ty/is-land": "^4.0.1",
+    "@picocss/pico": "^2.0.6",
+    "@zachleat/heading-anchors": "^1.0.3",
+    "clean-css": "^5.3.3",
+    "cross-env": "^7.0.3",
+    "jquery": "^3.7.1",
+    "markdown-it": "^14.1.0",
+    "rimraf": "^6.0.1",
+    "zod": "^3.24.2",
+    "zod-validation-error": "^3.4.0"
   }
 }
