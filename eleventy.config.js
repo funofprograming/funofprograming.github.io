@@ -1,7 +1,7 @@
 import { IdAttributePlugin, InputPathToUrlTransformPlugin, HtmlBasePlugin } from "@11ty/eleventy";
 import navigation from "@11ty/eleventy-navigation"
-import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import markdownIt from "markdown-it";
+import markdownItAttr from "markdown-it-attrs";
 import {tabber, tab} from "./tabs.js"
 import pluginFilters from "./filters.js";
 import pluginShortcodes from "./shortcode.js";
@@ -12,7 +12,6 @@ export default function (eleventyConfig) {
 
     // PLUGINS
     eleventyConfig.addPlugin(navigation);
-    eleventyConfig.addPlugin(syntaxHighlight);
 	eleventyConfig.addPlugin(HtmlBasePlugin);
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
     eleventyConfig.addPlugin(IdAttributePlugin, {
@@ -32,6 +31,7 @@ export default function (eleventyConfig) {
     };
     eleventyConfig.setLibrary("md", markdownIt(options));
     eleventyConfig.amendLibrary("md", (mdLib) => mdLib.disable("code"))
+    eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownItAttr))
     eleventyConfig.addPassthroughCopy("static")
     eleventyConfig.addPassthroughCopy({"node_modules/@11ty/is-land/*.js": "static/js/"});
     eleventyConfig.addPassthroughCopy({"node_modules/jquery/dist/jquery.min.js": "static/js/jquery.min.js"});

@@ -1,5 +1,3 @@
-import { pairedShortcode } from "@11ty/eleventy-plugin-syntaxhighlight";
-
 export function tabber(content, tabId, tabHeaders) {
     
     let tabHeadersMap = new Map(Object.entries(tabHeaders))

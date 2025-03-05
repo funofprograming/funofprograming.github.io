@@ -44,5 +44,7 @@
     "jqueryuijs": "/static/js/jquery-ui.min.js",
     "islandjs": "/static/js/is-land.js",
 	"headinganchorsjs": "/static/js/heading-anchors.js",
-	"lampjs": "/static/js/lamp.js"
+	"lampjs": "/static/js/lamp.js",
+	"prismjs": "/static/js/prism.js"
 }
+

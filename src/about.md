@@ -4,7 +4,7 @@ title: "About"
 description: " "
 ---
 
-{# ![Akshay](/static/images/Akshay-18062024.jpg) #}
+![Akshay](/static/images/Akshay-small-18062024.jpg)
 
 ## Akshay Jain
 
@@ -37,3 +37,6 @@ I am currently working in Noida as a software engineer.
   - Index
 - Telecom
 - Retail
+
+### Social
+[LinkedIn](https://www.linkedin.com/in/akshay-jain-66311643){:target=”_blank”}

@@ -33,13 +33,13 @@ This allows to store values against named Keys which also store value type infor
 #### Versions
 Check for latest versions here: [Releases](https://github.com/funofprograming/application-context-util/releases)
 
-### Kotlin code usage
+### Code
 
 Globally available context in all threads/coroutine
 
 {% tabber "acuTabs1", {"acu-kotlin1":"Kotlin", "acu-java1":"Java"} %}
 {% tab "acu-kotlin1" %}
-```kotlin
+```kotlin 
 import io.github.funofprograming.context.impl.*
 
 val contextName: String = "TestGlobalApplicationContext"
@@ -97,7 +97,7 @@ public class TestGlobalApplicationContext{
 
 Above snippet prints:
 
-```text
+```text {.no-line-numbers}
 true
 ```
 
@@ -167,7 +167,7 @@ public class TestThreadLocalApplicationContext{
 
 Above snippet prints:
 
-```text
+```text {.no-line-numbers}
 true
 true
 ```
