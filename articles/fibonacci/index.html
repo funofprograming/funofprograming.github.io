@@ -3,23 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fun of Programing</title>
-<meta content="Fun of Programing" property="og:title">
-<meta content="Fun of Programing" name="twitter:title">
-<meta content="Fun of Programing" name="title">
-<meta content="Fun of Programing" property="og:site_name">
-<meta content="Fun of coding with interesting projects and problems" name="description">
-<meta content="Fun of coding with interesting projects and problems" property="facebook:description">
-<meta content="Fun of coding with interesting projects and problems" property="og:description">
-<meta content="Fun of coding with interesting projects and problems" name="twitter:description">
+<title>Fibonacci using recursion – Really Easy or Hard??</title>
+<meta content="Fibonacci using recursion – Really Easy or Hard??" property="og:title">
+<meta content="Fibonacci using recursion – Really Easy or Hard??" name="twitter:title">
+<meta content="Fibonacci using recursion – Really Easy or Hard??" name="title">
+<meta content="Fibonacci using recursion – Really Easy or Hard??" property="og:site_name">
+<meta content=" " name="description">
+<meta content=" " property="facebook:description">
+<meta content=" " property="og:description">
+<meta content=" " name="twitter:description">
 
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://funofprograming.github.io//">
+<link rel="canonical" href="https://funofprograming.github.io//articles/fibonacci/">
 <meta name="language" content="en">
 <meta name="locale" content="en_IN">
 <meta property="og:locale" content="en_IN">
 <meta name="generator" content="Eleventy v3.0.0"> 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"Fun projects and problems with coding","headline":"Fun of Programing - Fun projects and problems with coding","name":"Fun of Programing","url":"https://funofprograming.github.io//"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"Fun projects and problems with coding","headline":"Fun of Programing - Fun projects and problems with coding","name":"Fun of Programing","url":"https://funofprograming.github.io//articles/fibonacci/"}</script>
 <meta name="generator" content="Eleventy v3.0.0">
 <meta name="color-scheme" content="light dark">
 <link rel="stylesheet" href="/static/css/index.css">
@@ -101,14 +101,87 @@ Dark
 <main id="skip">
 <header class="container">
 <hgroup>
-<h1 id="fun-of-programing"><a href="/">Fun of Programing</a></h1>
-<h2 id="fun-of-coding-with-interesting-projects-and-problems"><em>Fun of coding with interesting projects and problems</em></h2>
+<h1 id="fibonacci-using-recursion-really-easy-or-hard"><a href="/articles/fibonacci/">Fibonacci using recursion – Really Easy or Hard??</a></h1>
+<h2 id=""><em> </em></h2>
 </hgroup>
 </header>
+<div class="container">
+<p>
+<a href="/tags/articles/"><small>articles</small></a> ,
+<a href="/tags/fibonacci/"><small>fibonacci</small></a> ,
+<a href="/tags/java/"><small>Java</small></a></p>
+</div>
 <div class="container snls snts">
 <heading-anchors>
-<p>Welcome in to Fun of Programig (FoP).</p>
-<p>FoP is my side work which I started to share any interesting s/w engineering projects/problems that I find fun and enjoyable to solve.</p>
+<p><time datetime="2016-06-09">09 June 2016</time></p>
+<p><img src="/static/images/fibonacci-number-games.jpg" alt="Fibonacci"></p>
+<p>How hard is it to find a Fibonacci number? What is the use of this post? Pure waste of time?</p>
+<p>Is it really so hard?</p>
+<p>What we normally find on internet and school books is this:</p>
+<pre><code class="language-java">public class Fibonacci
+{
+    private long numRec = 0;
+ 
+    public static void main(String[] args)
+    {
+        BufferedReader systemReader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println(&quot;Enter a number:&quot;);
+        long number = Long.parseLong(systemReader.readLine());
+        Fibonacci f = new Fibonacci();
+        long time = System.currentTimeMillis();
+        System.out.println(&quot;Fibonacci number:&quot;+f.fibonacci(number));
+        System.out.println(&quot;Number of Recursions:&quot;+f.numRec);
+        System.out.println((System.currentTimeMillis()-time)/1000);
+    }
+ 
+    long fibonacci(long number)
+    {
+        numRec++;
+        if (number == 0 || number == 1)
+            return number;
+        else
+            return fibonacci(number - 1) + fibonacci(number - 2);
+    }
+}
+</code></pre>
+<p>Now running this above program will give you 46th Fibonacci number in 16 seconds with 3672623805 recursions on an Intel i5 32 bit processor. And for finding 51st Fibonacci number, well I couldn’t wait for program to end. So I set out to find myself what is the problem with what is being taught in schools.</p>
+<p>If we analyze the above program then we find that for every recursions we do 2 more recursions:</p>
+<p><strong>f(n) = f(n-1) + f(n-2)</strong></p>
+<p>Now f(n-1) = f(n-2) + f(n-3)</p>
+<p>Which clearly means that while calculating f(n-1) program calculates f(n-2) so why calculate f(n-2) again. This is the trouble with above program.</p>
+<p>Now what is the solution. Why not we deal with indexes in recursion instead of numbers and use only latest two calculated numbers for calculating next one. After all that’s how its done by humans. Start index with 1 and latest two numbers as 0 and 1. And we get following:</p>
+<pre><code class="language-java">public class Fibonacci
+{
+ 
+    private long numRec = 0;
+ 
+    public static void main(String[] args)
+    {
+        BufferedReader systemReader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println(&quot;Enter a number:&quot;);
+        long number = Long.parseLong(systemReader.readLine());
+        Fibonacci f = new Fibonacci();
+        long time = System.currentTimeMillis();
+        System.out.println(&quot;Fibonacci number:&quot;+f.fibonacci(1, number, 1, 0));
+        System.out.println(&quot;Number of Recursions:&quot;+f.numRec);
+        System.out.println((System.currentTimeMillis()-time)/1000);
+    }
+ 
+    long fibonacci(long index, long desiredIndex, long number, long lastNumber)
+    {
+        numRec++;
+        number = number + lastNumber;
+        lastNumber = number - lastNumber;
+        if(desiredIndex == 0 || desiredIndex == 1)
+            return desiredIndex;
+        if (desiredIndex-index == 1)
+            return number;
+        return fibonacci(index + 1, desiredIndex, number, lastNumber);
+    }
+}
+</code></pre>
+<p>Running this above program I get 46th Fibonacci number in exactly 44 recursions and 0 sec (basically even less than 1 millisec). So now I calculated 1001st Fibonacci number and this new program took 999 recursions and again 0 sec. So for this program</p>
+<p><strong>number_of_recursions = Fibonacci_number_to_be_found – 2</strong></p>
 
 </heading-anchors>
 <div class="container p-5">
@@ -119,19 +192,7 @@ Dark
 </div>
 
 </div>
-<script type="text/javascript" defer="">
-    $(function() {
-        $("div.ui-tabs").tabs({
-            activate: function( event, ui ) {
-                var tabIndex = $(this).tabs('option', 'active');
-                $("div.ui-tabs").tabs({active:tabIndex});
-            }
-        });
-    });
-    
-</script>
 </main>
-
 <hr>
 <footer>
     <p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>

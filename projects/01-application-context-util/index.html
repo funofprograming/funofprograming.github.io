@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Context</title>
+<meta content="Application Context" property="og:title">
+<meta content="Application Context" name="twitter:title">
+<meta content="Application Context" name="title">
+<meta content="Application Context" property="og:site_name">
+<meta content=" " name="description">
+<meta content=" " property="facebook:description">
+<meta content=" " property="og:description">
+<meta content=" " name="twitter:description">
+
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://funofprograming.github.io//projects/01-application-context-util/">
+<meta name="language" content="en">
+<meta name="locale" content="en_IN">
+<meta property="og:locale" content="en_IN">
+<meta name="generator" content="Eleventy v3.0.0"> 
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"Fun projects and problems with coding","headline":"Fun of Programing - Fun projects and problems with coding","name":"Fun of Programing","url":"https://funofprograming.github.io//projects/01-application-context-util/"}</script>
+<meta name="generator" content="Eleventy v3.0.0">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="/static/css/index.css">
+<link rel="stylesheet" href="/static/css/jquery-ui.min.css">
+<link rel="stylesheet" href="/static/css/jquery-ui.structure.min.css">
+<link rel="stylesheet" href="/static/css/jquery-ui.theme.min.css">
+<link rel="stylesheet" href="/static/css/prism.css">
+<link rel="stylesheet" href="/static/css/pico.min.css">
+<link rel="stylesheet" href="/static/css/message-box.css">
+<script type="module">
+    import "/static/js/is-land.js";
+</script>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/static/js/heading-anchors.js"></script>
+<script type="text/javascript" src="/static/js/lamp.js"></script>
+<script type="text/javascript" src="/static/js/prism.js"></script>
+
+<style>.skip-to-content{position:absolute;top:-100px;left:100px;background-color:#4b4e54;color:#fff;padding:10px;text-decoration:none;z-index:999;transition:top .3s}.skip-to-content:focus{top:0}.snts{counter-reset:section}.snt{counter-reset:subsection}.snt::before{counter-increment:section;content:"" counter(section)}.snls{counter-reset:section}.snl{counter-reset:subsection}.snl::before{counter-increment:section;content:"" counter(section)}sup{padding-right:8px}.p-5{padding-top:25px}img{max-width:100%;padding-top:5px;padding-bottom:12px}iframe{height:auto;width:100%;aspect-ratio:16/9;padding-top:5px;padding-bottom:12px}</style>
+
+
+</head>
+<body class="line-numbers match-braces">
+<a href="#skip" class="skip-to-content contrast" role="button">Skip to main content</a>
+<navbar>
+<nav class="container-fluid">
+<ul>
+<li>
+<details class="dropdown">
+<summary role="button" class="primary">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"></path>
+<title>Menu</title>
+</svg>
+</summary>
+<ul><li><a href="/">Home</a></li><li><a href="/articles/">Articles</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li><li><a href="/search/">Search</a></li></ul>
+</details>
+</li>
+</ul>
+<ul>
+<li><strong><a href="https://funofprograming.github.io/">Fun of Programing</a></strong></li>
+</ul>
+<ul>
+<li>
+<details class="dropdown">
+<summary role="button" class="primary">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+  <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a2 2 0 0 0-.453-.618A5.98 5.98 0 0 1 2 6m6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1"></path>
+<title>Themes Mode</title>
+</svg>
+</summary>
+<ul dir="rtl">
+<li><a href="#" data-theme-switcher="auto">
+Auto
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning-charge" viewBox="0 0 16 16">
+  <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09zM4.157 8.5H7a.5.5 0 0 1 .478.647L6.11 13.59l5.732-6.09H9a.5.5 0 0 1-.478-.647L9.89 2.41z"></path>
+</svg>
+</a></li>
+<li><a href="#" data-theme-switcher="light">
+Light
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brightness-high" viewBox="0 0 16 16">
+  <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h3a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h3A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"></path>
+</svg>
+</a></li>
+<li><a href="#" data-theme-switcher="dark">
+Dark
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars" viewBox="0 0 16 16">
+  <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"></path>
+  <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.73 1.73 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.73 1.73 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.73 1.73 0 0 0 1.097-1.097zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.16 1.16 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.16 1.16 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732z"></path>
+</svg>
+</a></li>
+</ul>
+</details>
+</li>
+</ul>
+</nav>
+</navbar><hr>
+
+<main id="skip">
+<header class="container">
+<hgroup>
+<h1 id="application-context"><a href="/projects/01-application-context-util/">Application Context</a></h1>
+<h2 id=""><em> </em></h2>
+</hgroup>
+</header>
+<div class="container snls snts">
+<heading-anchors>
+<h2 id="overview">Overview</h2>
+<p>Application context util is a simple kotlin based library that provides for setting up and using simple key/value context in our application.
+Sure key/value pairs can be managed by a simple Map but then passing that map all around the code methods is very cumbersome.</p>
+<p>What this library aims is to enable to create and access context anywhere in code statically without needing to pass around in methods meanwhile providing thread/coroutine safety as well.</p>
+<p>Central interface of this library is <strong>ApplicationContext</strong></p>
+<p>This allows to store values against named Keys which also store value type information</p>
+<h2 id="usage">Usage</h2>
+<h3 id="maven-dependency">Maven dependency</h3>
+<pre><code class="language-xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.github.funofprograming&lt;/groupId&gt;
+    &lt;artifactId&gt;application-context-util&lt;/artifactId&gt;
+    &lt;version&gt;LATEST&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h4 id="versions">Versions</h4>
+<p>Check for latest versions here: <a href="https://github.com/funofprograming/application-context-util/releases">Releases</a></p>
+<h3 id="code">Code</h3>
+<p>Globally available context in all threads/coroutine</p>
+<p></p><div>
+<is-land on:visible="" on:idle="">
+<script type="text/javascript">
+$( function() {
+$( '#acuTabs1' ).tabs();
+} );
+</script>
+<div id="acuTabs1">
+<ul><p></p>
+<p><li><a href="#acu-kotlin1">Kotlin</a></li></p>
+<p><li><a href="#acu-java1">Java</a></li></p>
+<p></p></ul><p></p>
+<p></p><div id="acu-kotlin1"><p></p>
+<pre><code class="language-kotlin">import io.github.funofprograming.context.impl.*
+
+val contextName: String = &quot;TestGlobalApplicationContext&quot;
+val valueSetInThread1 = &quot;Value T1&quot;
+val validKey: Key&lt;String&gt; = Key.of(&quot;ValidKey&quot;, String::class.java)
+
+val def1 = launch {
+    val globalContext = getGlobalContext(contextName)
+    globalContext?.add(validKey, valueSetInThread1)
+}
+
+delay(1000)
+
+val def2 = async {
+    val globalContext = getGlobalContext(contextName)
+    return@async globalContext?.fetch(validKey)
+}
+
+
+println(valueSetInThread1 == def2.await())
+</code></pre>
+<p></p></div><p></p>
+<p></p><div id="acu-java1"><p></p>
+<pre><code class="language-java">import io.github.funofprograming.context.impl.*;
+import java.util.concurrent.*;
+
+public class TestGlobalApplicationContext{
+    public static void main(String[] args) {
+        String contextName = &quot;TestGlobalApplicationContext&quot;;
+        Key&lt;String&gt; validKey = Key.Companion.of(&quot;ValidKey&quot;, String.class);
+        ThreadPoolExecutor executorService = new ThreadPoolExecutor(1, 1, 1L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue&lt;Runnable&gt;());
+        String valueSetInThread1 = &quot;Value T1&quot;;
+
+        CompletableFuture.runAsync(()-&gt;{
+            ApplicationContext globalContext = ApplicationContextHoldersKt.getGlobalContext(contextName);
+            globalContext.add(validKey, valueSetInThread1);
+        });
+
+        Thread.sleep(1000);
+
+        CompletableFuture&lt;String&gt; future2 = CompletableFuture.supplyAsync(()-&gt;{
+            ApplicationContext globalContext = ApplicationContextHoldersKt.getGlobalContext(contextName);
+            return globalContext.fetch(validKey);
+        });
+        Thread.sleep(1000);
+        
+        System.out.println(valueSetInThread1.equals(future2.get()));
+    }    
+}
+</code></pre>
+<p></p></div><p></p>
+<p></p></div>
+</is-land>
+</div><p></p>
+<p>Above snippet prints:</p>
+<pre><code class="no-line-numbers language-text">true
+</code></pre>
+<p>ThreadLocal available context in current thread/coroutine</p>
+<p></p><div>
+<is-land on:visible="" on:idle="">
+<script type="text/javascript">
+$( function() {
+$( '#acuTabs2' ).tabs();
+} );
+</script>
+<div id="acuTabs2">
+<ul><p></p>
+<p><li><a href="#acu-kotlin2">Kotlin</a></li></p>
+<p><li><a href="#acu-java2">Java</a></li></p>
+<p></p></ul><p></p>
+<p></p><div id="acu-kotlin2"><p></p>
+<pre><code class="language-kotlin">import io.github.funofprograming.context.impl.*
+
+val contextName: String = &quot;TestThreadLocalApplicationContext&quot;
+val valueSetInThread1 = &quot;Value T1&quot;
+val validKey: Key&lt;String&gt; = Key.of(&quot;ValidKey&quot;, String::class.java)
+
+val cs1 = initCoroutineScopeForApplicationContext() //notice the initialization of coroutine scope in case we plan to use a thread local context inside a coroutine
+val def1 = cs1.async {
+    val localContext = getThreadLocalContext(contextName)
+    localContext?.add(validKey, valueSetInThread1)
+    return@async getThreadLocalContext(contextName)?.fetch(validKey)
+}
+
+delay(1000)
+val cs2 = initCoroutineScopeForApplicationContext() //notice the initialization of coroutine scope in case we plan to use a thread local context inside a coroutine
+val def2 = cs2.async {
+    val localContext = getThreadLocalContext(contextName)
+    return@async localContext?.fetch(invalidKey)
+}
+
+println(def2.await() == null)
+println(valueSetInThread1 == def1.await())
+</code></pre>
+<p></p></div><p></p>
+<p></p><div id="acu-java2"><p></p>
+<pre><code class="language-java">import io.github.funofprograming.context.impl.*;
+import java.util.concurrent.*;
+
+public class TestThreadLocalApplicationContext{
+    public static void main(String[] args) {
+        String contextName = &quot;TestThreadLocalApplicationContext&quot;;
+        Key&lt;String&gt; validKey = Key.Companion.of(&quot;ValidKey&quot;, String.class);
+        ThreadPoolExecutor executorService = new ThreadPoolExecutor(1, 1, 1L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue&lt;Runnable&gt;());
+        String valueSetInThread1 = &quot;Value T1&quot;;
+
+        CompletableFuture&lt;String&gt; future1 = CompletableFuture.supplyAsync(()-&gt;{
+            ApplicationContext localContext = ApplicationContextHoldersKt.getThreadLocalContext(contextName);
+            localContext.add(validKey, valueSetInThread1);
+            return ApplicationContextHoldersKt.getThreadLocalContext(contextName).fetch(validKey);
+        }, executorService);
+
+        Thread.sleep(1000);
+
+        CompletableFuture&lt;String&gt; future2 = CompletableFuture.supplyAsync(()-&gt;{
+            ApplicationContext localContext = ApplicationContextHoldersKt.getThreadLocalContext(contextName);
+            return localContext.fetch(validKey);
+        }, executorService);
+
+        System.out.println(future2.get() == null);
+        System.out.println(valueSetInThread1.equals(future1.get()));
+    }
+}
+</code></pre>
+<p></p></div><p></p>
+<p></p></div>
+</is-land>
+</div><p></p>
+<p>Above snippet prints:</p>
+<pre><code class="no-line-numbers language-text">true
+true
+</code></pre>
+<p>Also, the context supports restricting keys of context to some predetermined set as follows:</p>
+<p></p><div>
+<is-land on:visible="" on:idle="">
+<script type="text/javascript">
+$( function() {
+$( '#acuTabs3' ).tabs();
+} );
+</script>
+<div id="acuTabs3">
+<ul><p></p>
+<p><li><a href="#acu-kotlin3">Kotlin</a></li></p>
+<p><li><a href="#acu-java3">Java</a></li></p>
+<p></p></ul><p></p>
+<p></p><div id="acu-kotlin3"><p></p>
+<pre><code class="language-kotlin">import io.github.funofprograming.context.impl.*
+
+val contextName: String = &quot;TestApplicationContext&quot;
+val validKey: Key&lt;String&gt; = Key.of(&quot;ValidKey&quot;, String::class.java)
+val invalidKey: Key&lt;String&gt; = Key.of(&quot;InvalidKey&quot;, String::class.java)
+val permittedKeys: Set&lt;Key&lt;*&gt;&gt; = setOf(validKey)
+
+val globalContext = getGlobalContext(contextName, permittedKeys)
+globalContext?.add(validKey, valueSetInThread1)
+globalContext?.fetch(invalidKey) //throws InvalidKeyException here since invalidKey is not part of permittedKeys
+
+val localContext = getThreadLocalContext(contextName, permittedKeys)
+localContext?.add(validKey, valueSetInThread1)
+localContext?.fetch(invalidKey) //throws InvalidKeyException here since invalidKey is not part of permittedKeys
+</code></pre>
+<p></p></div><p></p>
+<p></p><div id="acu-java3"><p></p>
+<pre><code class="language-java">import io.github.funofprograming.context.impl.*;
+import java.util.concurrent.*;
+
+public class TestApplicationContext{
+    public static void main(String[] args) {
+        String contextName = &quot;TestApplicationContext&quot;;
+        Key&lt;String&gt; validKey = Key.Companion.of(&quot;ValidKey&quot;, String.class);
+        String valueSetInThread1 = &quot;Value T1&quot;;
+        Key&lt;String&gt; invalidKey = Key.Companion.of(&quot;InvalidKey&quot;, String.class);
+        Set&lt;Key&lt;?&gt;&gt; permittedKeys = new HashSet&lt;&gt;(Arrays.asList(validKey));
+
+        ApplicationContext globalContext = ApplicationContextHoldersKt.getGlobalContext(contextName, permittedKeys);
+        globalContext.add(validKey, valueSetInThread1);
+        globalContext.fetch(invalidKey); //throws InvalidKeyException here since invalidKey is not part of permittedKeys
+
+        ApplicationContext localContext = ApplicationContextHoldersKt.getThreadLocalContext(contextName, permittedKeys);
+        localContext.add(validKey, valueSetInThread1);
+        localContext.fetch(invalidKey); //throws InvalidKeyException here since invalidKey is not part of permittedKeys
+    }
+}
+</code></pre>
+<p></p></div><p></p>
+<p></p></div>
+</is-land>
+</div><p></p>
+<h2 id="compatibility-matrix">Compatibility matrix</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Application Context Util</th>
+<th style="text-align:center">Java</th>
+<th style="text-align:center">Kotlin-Std</th>
+<th style="text-align:center">Kotlin-Coroutines</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1.0.0</td>
+<td style="text-align:center">21</td>
+<td style="text-align:center">2.1.10</td>
+<td style="text-align:center">1.10.1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="license">License</h2>
+<p>Application context util is is released under version 2.0 of the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License</a>.</p>
+<h2 id="github">Github</h2>
+<p><a href="https://github.com/funofprograming/application-context-util">application-context-util</a></p>
+
+
+</heading-anchors>
+<div class="container p-5">
+<nav>
+
+
+</nav>
+</div>
+
+</div>
+<script type="text/javascript" defer="">
+    $(function() {
+        $("div.ui-tabs").tabs({
+            activate: function( event, ui ) {
+                var tabIndex = $(this).tabs('option', 'active');
+                $("div.ui-tabs").tabs({active:tabIndex});
+            }
+        });
+    });
+    
+</script>
+</main>
+
+<hr>
+<footer>
+    <p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+</footer>
+
+</body>
+</html>

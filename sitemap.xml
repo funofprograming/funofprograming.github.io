@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+	
+	<url>
+		<loc>https://funofprograming.github.io/articles/fibonacci/</loc>
+		<lastmod>2016-06-09</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://funofprograming.github.io/about/</loc>
+		<lastmod>2025-03-05</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://funofprograming.github.io/articles/</loc>
+		<lastmod>2025-03-05</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://funofprograming.github.io/</loc>
+		<lastmod>2025-03-05</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://funofprograming.github.io/projects/</loc>
+		<lastmod>2025-03-05</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://funofprograming.github.io/projects/01-application-context-util/</loc>
+		<lastmod>2025-03-05</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://funofprograming.github.io/search/</loc>
+		<lastmod>2025-03-05</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://funofprograming.github.io/tags/</loc>
+		<lastmod>2025-03-05</lastmod>
+	</url>
+</urlset>
