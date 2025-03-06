@@ -1,0 +1,15 @@
+---
+layout: home.njk
+---
+<div class="container">
+    <p>{%- for tag in tags | filterTagList %}{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+    {% if tag %}<a href="{{ tagUrl }}"><small>{{ tag }}</small></a> {%- if not loop.last %} ,{% endif %}{% endif %}	{%- endfor %}</p>
+</div>
+{{ content | safe }}
+
+<div>
+{% include "partials/pagination.njk" %}
+</div>
+<div>
+    {% include "partials/utterances.njk" %}
+</div>

@@ -3,4 +3,5 @@ export default {
 		"projects"
 	],
 	"layout": "project.njk",
+	"commentlabel": "fopcomments"
 };

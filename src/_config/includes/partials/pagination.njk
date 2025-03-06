@@ -1,7 +1,7 @@
 <div class="container p-5">
 <nav>
-{%- if collections.docs %}
-{%- set previousPost = collections.docs | getPreviousCollectionItem %}
+{%- if collections.projects %}
+{%- set previousPost = collections.projects | getPreviousCollectionItem %}
 {%- if nextPost or previousPost %}
 {%- if previousPost %}
 <ul>
@@ -17,8 +17,8 @@
 {%- endif %}
 {%- endif %}
 {% if pagination.href.previous %}<ul><li><a href="{{ pagination.href.previous }}" class="secondary">← Previous</a></li></ul>{% endif %}
-{%- if collections.posts %}
-{%- set previousPost = collections.posts | getPreviousCollectionItem %}
+{%- if collections.articles %}
+{%- set previousPost = collections.articles | getPreviousCollectionItem %}
 {%- if nextPost or previousPost %}
 {%- if previousPost %}
 <ul>
@@ -33,8 +33,8 @@
 {%- endif %}
 {%- endif %}
 {%- endif %}
-{%- if collections.docs %}
-{%- set nextPost = collections.docs | getNextCollectionItem %}
+{%- if collections.projects %}
+{%- set nextPost = collections.projects | getNextCollectionItem %}
 {%- if nextPost or previousPost %}
 {%- if nextPost %}
 <ul>
@@ -50,8 +50,8 @@
 {%- endif %}
 {%- endif %}
 {% if pagination.href.next %}<ul><li><a href="{{ pagination.href.next }}" class="secondary">Next →</a></li></ul>{% endif %}
-{%- if collections.posts %}
-{%- set nextPost = collections.posts | getNextCollectionItem %}
+{%- if collections.articles %}
+{%- set nextPost = collections.articles | getNextCollectionItem %}
 {%- if nextPost or previousPost %}
 {%- if nextPost %}
 <ul>

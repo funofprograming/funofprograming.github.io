@@ -35,4 +35,5 @@ eleventyConfig.addShortcode("image",(image,title) =>`<img src="${image}" loading
 eleventyConfig.addShortcode("imagesmall",(image,title) =>`<div class="grid"><div><img src="${image}" loading="lazy" title="${title}"/></div><div></div></div>`,);
 eleventyConfig.addShortcode("video",(video,title) =>`<iframe title="${title}" loading="lazy" src="${video}"></iframe>`,);
 eleventyConfig.addShortcode("videosmall",(video,title) =>`<div class="grid"><div><iframe title="${title}" loading="lazy" src="${video}"></iframe></div><div></div></div>`,);
+eleventyConfig.addShortcode("github",(title, url) =>`<div><img src="/static/images/github-mark.png" loading="lazy" title="${title}" height="56px", width="50px"/> <a href="${url}" class="primary">${title}</a></div>`,);
 };

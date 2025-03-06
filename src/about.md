@@ -6,7 +6,7 @@ description: " "
 
 ![Akshay](/static/images/Akshay-small-18062024.jpg)
 
-## Akshay Jain
+## {{ site.author.name }}
 
 ### Background
 
@@ -39,4 +39,4 @@ I am currently working in Noida as a software engineer.
 - Retail
 
 ### Social
-[LinkedIn](https://www.linkedin.com/in/akshay-jain-66311643){:target=”_blank”}
+[LinkedIn]({{ site.author.linkedIn }}){:target=”_blank”}

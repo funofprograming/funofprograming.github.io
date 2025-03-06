@@ -3,4 +3,5 @@ export default {
 		"articles"
 	],
 	"layout": "article.njk",
+	"commentlabel": "foparticlecomments"
 };
