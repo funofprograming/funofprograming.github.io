@@ -230,5 +230,5 @@ public class TestApplicationContext{
 
 Application context util is is released under version 2.0 of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
 
-## Github
-[application-context-util](https://github.com/funofprograming/application-context-util)
+## Source
+{% github "application-context-util", "https://github.com/funofprograming/application-context-util" %}
