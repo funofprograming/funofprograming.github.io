@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java Enum Validator</title>
+<meta content="Java Enum Validator" property="og:title">
+<meta content="Java Enum Validator" name="title">
+<meta content="Java Enum Validator" property="og:site_name">
+<meta content=" " name="description">
+<meta content=" " property="og:description">
+
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://funofprograming.github.io/articles/javaEnumValidator/">
+<meta name="language" content="en">
+<meta name="locale" content="en_IN">
+<meta property="og:locale" content="en_IN">
+<meta name="generator" content="Eleventy v3.0.0"> 
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"Fun of coding with interesting projects and problems","headline":"Fun of Programing - Fun of coding with interesting projects and problems","name":"Fun of Programing","url":"https://funofprograming.github.io/articles/javaEnumValidator/"}</script>
+<meta name="generator" content="Eleventy v3.0.0">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="/static/css/index.css">
+<link rel="stylesheet" href="/static/css/jquery-ui.min.css">
+<link rel="stylesheet" href="/static/css/jquery-ui.structure.min.css">
+<link rel="stylesheet" href="/static/css/jquery-ui.theme.min.css">
+<link rel="stylesheet" href="/static/css/prism.css">
+<link rel="stylesheet" href="/static/css/pico.min.css">
+<link rel="stylesheet" href="/static/css/message-box.css">
+<script type="module">
+    import "/static/js/is-land.js";
+</script>
+<script type="text/javascript" src="/static/js/lamp.js"></script>
+<script type="text/javascript" src="/static/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/static/js/prism.js"></script>
+
+<style>.skip-to-content{position:absolute;top:-100px;left:100px;background-color:#4b4e54;color:#fff;padding:10px;text-decoration:none;z-index:999;transition:top .3s}.skip-to-content:focus{top:0}.snts{counter-reset:section}.snt{counter-reset:subsection}.snt::before{counter-increment:section;content:"" counter(section)}.snls{counter-reset:section}.snl{counter-reset:subsection}.snl::before{counter-increment:section;content:"" counter(section)}sup{padding-right:8px}.p-5{padding-top:25px}img{max-width:100%;padding-top:5px;padding-bottom:12px}iframe{height:auto;width:100%;aspect-ratio:16/9;padding-top:5px;padding-bottom:12px}</style>
+
+
+</head>
+
+<body class="line-numbers match-braces">
+    <div style="text-align: center; font-size: xx-large;">
+        <header class="container">
+            <hgroup>
+                <h1 id="fun-of-programing">
+                    
+                    <a href="https://funofprograming.github.io">Fun of Programing</a>
+                    
+                </h1>
+            </hgroup>
+        </header>
+    </div>
+    <navbar>
+  <nav class="container-fluid">
+    <div><a href="/articles/">Articles</a></div><div><a href="/projects/">Projects</a></div><div><a href="/about/">About</a></div><div><a href="/search/">Search</a></div>
+  </nav>
+</navbar>
+<hr>
+
+<main id="skip">
+<header class="container">
+<hgroup>
+<h1 id="java-enum-validator"><a href="/articles/javaEnumValidator/">Java Enum Validator</a></h1>
+<h2 id=""><em> </em></h2>
+</hgroup>
+</header>
+<div class="container snls snts">
+<heading-anchors>
+<div class="container">
+    <p>
+    <a href="/tags/articles/"><small>articles</small></a> ,
+    <a href="/tags/enum-validator/"><small>enum-validator</small></a> ,
+    <a href="/tags/java/"><small>Java</small></a></p>
+</div>
+<p><time datetime="2016-09-29">29 September 2016</time></p>
+<p><img src="/static/images/validation.jpg" alt="JavaEnumValidator"></p>
+<p>A lot of times while designing web services some data attribute to be exchanged is an enum. So how to validate such data at service end. One way is to write boilerplate code for this purpose but then what’s the use of Java Bean Validation. So how to use Java Bean Validation for validating a String attribute against an Enum values.First the annotation @Enum</p>
+<pre><code class="language-java">import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+ 
+import javax.validation.Constraint;
+import javax.validation.Payload;
+ 
+@Documented
+@Constraint(validatedBy = {EnumValueValidator.class})
+@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER })
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Enum
+{
+    public abstract String message() default &quot;Invalid value. This is not permitted.&quot;;
+     
+    public abstract Class&lt;?&gt;[] groups() default {};
+  
+    public abstract Class&lt;? extends Payload&gt;[] payload() default {};
+     
+    public abstract Class&lt;? extends java.lang.Enum&lt;?&gt;&gt; enumClass();
+     
+    public abstract boolean ignoreCase() default false;
+}
+</code></pre>
+<p>Now this annotation @Enum provides a boolean option of ignoring the case while validation. We will see next how it is used in EnumValueValidator class</p>
+<pre><code class="language-java">import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+ 
+public class EnumValueValidator implements ConstraintValidator&lt;Enum, String&gt;
+{
+    private Enum annotation;
+ 
+    @Override
+    public void initialize(Enum annotation)
+    {
+        this.annotation = annotation;
+    }
+ 
+    @Override
+    public boolean isValid(String valueForValidation, ConstraintValidatorContext constraintValidatorContext)
+    {
+        boolean result = false;
+         
+        Object[] enumValues = this.annotation.enumClass().getEnumConstants();
+         
+        if(enumValues != null)
+        {
+            for(Object enumValue:enumValues)
+            {
+                if(valueForValidation.equals(enumValue.toString()) 
+                   || (this.annotation.ignoreCase() &amp;&amp; valueForValidation.equalsIgnoreCase(enumValue.toString())))
+                {
+                    result = true; 
+                    break;
+                }
+            }
+        }
+         
+        return result;
+    }
+}
+</code></pre>
+<p>As we can see from class EnumValueValidator’s method isValid, the ignoreCase option is used to match values while ignoring case of the values being matched. This validator will match the incoming value that needs to be checked with String representation of the Enum against which validation is to be performed.</p>
+<p>Now how to use it. Consider the following enum</p>
+<pre><code class="language-java">public enum SampleEnum
+{
+    VALUE1,
+    VALUE2,
+    VALUE3;
+}
+</code></pre>
+<p>Now consider the JavaBean that gets created upon getting values from some source like a Web service/client, database, network, etc</p>
+<pre><code class="language-java">public class SampleBean
+{
+    @Enum(enumClass=SampleEnum.class, ignoreCase=true) 
+    String sample;
+ 
+    public String getSample()
+    {
+        return sample;
+    }
+ 
+    public void setSample(String sample)
+    {
+        this.sample = sample;
+    }
+     
+}
+</code></pre>
+<p>In this scenario our validator will validate the sample attribute of SampleBean and check if its value is same as one of the SampleEnum values.This is how we can extend JavaBean validation to have a Enum validator.</p>
+
+
+
+Suggestions for improvements are welcome.
+
+<div>
+<div class="container p-5">
+<nav>
+
+<ul>
+<li>
+<a href="/articles/fibonacci/" title="Fibonacci using recursion – Really Easy or Hard??" role="button" class="primary">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"></path>
+</svg> <small>Previous</small>
+</a>
+</li>
+</ul>
+
+</nav>
+</div>
+
+</div>
+<div>
+    
+
+<section>
+<style>.utterances{ max-width: 1080px; }</style>
+<script src="https://utteranc.es/client.js" repo="funofprograming/funofprograming.github.io" issue-term="og:title" label="foparticlecomments" theme="github-light" crossorigin="anonymous" async="">
+</script>
+<noscript>Please enable JavaScript to view the comments powered by Utterances.</noscript>
+</section>
+
+
+</div>
+
+</heading-anchors>
+</div>
+</main>
+
+<script type="text/javascript" defer="">
+    $(function() {
+        $("div.ui-tabs").tabs({
+            activate: function( event, ui ) {
+                var tabIndex = $(this).tabs('option', 'active');
+                $("div.ui-tabs").tabs({active:tabIndex});
+            }
+        });
+    });
+    
+</script>
+
+    <hr>
+    <footer>
+        <p><em>Built with <a href="https://www.11ty.dev/">Eleventy v3.0.0</a></em></p>
+    </footer>
+    
+</body>
+
+</html>
