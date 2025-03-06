@@ -1,22 +1,20 @@
 {
 	"title": "Fun of Programing",
-	"url": "https://funofprograming.github.io/",
+	"url": "https://funofprograming.github.io",
 	"language": "en",
 	"locale": "en_IN",
-	"description": "Fun projects and problems with coding",
+	"description": "Fun of coding with interesting projects and problems",
 	"author": {
 		"name": "Akshay Jain",
 		"email": "akshay.jain.7983@hotmail.com",
 		"url": "https://funofprograming.github.io/about",
 		"linkedIn": "https://www.linkedin.com/in/akshay-jain-66311643"
 	},
+	"utterancesRepo": true,
+	"fopghrepo": "funofprograming/funofprograming.github.io",
 	"color": "primary",
 	"nav_title": "Fun of Programing",
 	"navbar": [
-		{
-			"nav": "Home",
-			"link": "/"
-		},
 		{
 			"nav": "Articles",
 			"link": "/articles/"

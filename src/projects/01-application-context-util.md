@@ -2,6 +2,7 @@
 title: "Application Context"
 description: " "
 excerpt_separator: "<!--more-->"
+ghrepo: "https://github.com/funofprograming/application-context-util"
 tags:
   - application-context-util
   - Kotlin
@@ -231,4 +232,4 @@ public class TestApplicationContext{
 Application context util is is released under version 2.0 of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
 
 ## Source
-{% github "application-context-util", "https://github.com/funofprograming/application-context-util" %}
+{% github "application-context-util", ghrepo %}
