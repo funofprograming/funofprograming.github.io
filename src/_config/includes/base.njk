@@ -1,14 +1,30 @@
 <!doctype html>
 <html lang="{{ site.language }}">
+
 <head>
-{% include "partials/seo.njk" %}
+    {% include "partials/seo.njk" %}
 </head>
+
 <body class="line-numbers match-braces">
-{{content|safe}}
-<hr/>
-<footer>
-    <p><em>Built with <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a></em></p>
-</footer>
-<script type="module" src="{% getBundleFileUrl "js" %}"></script>
+    <div style="text-align: center; font-size: xx-large;">
+        <header class="container">
+            <hgroup>
+                <h1>
+                    {% if(ELEVENTY_RUN_MODE == 'serve') %}
+                    <a href="http://localhost:8080/">{{site.title}}</a>
+                    {% else %}
+                    <a href="{{site.url}}">{{site.title}}</a>
+                    {% endif %}
+                </h1>
+            </hgroup>
+        </header>
+    </div>
+    {{content|safe}}
+    <hr />
+    <footer>
+        <p><em>Built with <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a></em></p>
+    </footer>
+    <script type="module" src="{% getBundleFileUrl "js" %}"></script>
 </body>
+
 </html>

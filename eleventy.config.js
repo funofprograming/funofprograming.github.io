@@ -54,6 +54,8 @@ export default function (eleventyConfig) {
     
     eleventyConfig.addFilter("cssmin", function (code) {return new CleanCSS({}).minify(code).styles;});
 	eleventyConfig.on('eleventy.after', () => {execSync(`npx pagefind --site _site --glob \"**/*.html\"`, { encoding: 'utf-8' })})
+
+    eleventyConfig.addGlobalData("ELEVENTY_RUN_MODE", process.env.ELEVENTY_RUN_MODE);
 };
 
 export const config = {
