@@ -4,4 +4,4 @@ User-agent: *
 Allow: /
 
 
-Sitemap: https://funofprograming.github.io//sitemap.xml
+Sitemap: https://funofprograming.github.io/sitemap.xml
