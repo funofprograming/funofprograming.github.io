@@ -1,12 +1,13 @@
 ---
 title: "Fibonacci using recursion – Really Easy or Hard??"
-description: " "
+description: "Efficient recursion for Fibonnaci"
 tags:
   - fibonacci
   - Java
 date: 2016-06-09
+image: /static/images/fibonacci-number-games.jpg
 ---
-![Fibonacci](/static/images/fibonacci-number-games.jpg)
+![Fibonacci]({{ image }})
 
 How hard is it to find a Fibonacci number? What is the use of this post? Pure waste of time?
 

@@ -1,13 +1,17 @@
 ---
 title: "Application Context"
-description: " "
+description: "Statically using Context (Map based) in Kotlin/Java"
 excerpt_separator: "<!--more-->"
 ghrepo: "https://github.com/funofprograming/application-context-util"
 tags:
   - application-context-util
   - Kotlin
   - Java
+image: /static/images/context.jpeg
 ---
+
+![Application Context]({{ image }})
+
 ## Overview
 
 Application context util is a simple kotlin based library that provides for setting up and using simple key/value context in our application.

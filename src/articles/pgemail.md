@@ -1,12 +1,13 @@
 ---
-title: "E-Mail notifications with attachments using Oracle PL/SQL"
-description: " "
+title: "E-Mail notifications in Oracle PL/SQL"
+description: "Sending email (optionally with CLOB/BLOB attachments) using Oracle PL/SQL procedures"
 tags:
   - priority executor
   - Java
 date: 2016-07-27
+image: /static/images/email-logo.webp
 ---
-![PGNotifier](/static/images/email-logo.webp)
+![PGNotifier]({{ image }})
 
 How to send eMail notifications using PL/SQL? I know this has been answered several times before. So what’s new here? Following is:
 

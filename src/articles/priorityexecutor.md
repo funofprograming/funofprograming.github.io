@@ -1,12 +1,13 @@
 ---
-title: "PriorityExecutorService for Java"
-description: " "
+title: "PriorityExecutorService in Java"
+description: "Priority based ExecutorService whereby priority of task can be submitted along with task"
 tags:
   - priority executor
   - Java
 date: 2016-10-08
+image: /static/images/common-threads-reflections-614.jpg
 ---
-![PriorityExecutorService](/static/images/common-threads-reflections-614.jpg)
+![PriorityExecutorService]({{ image }})
 
 After searching a lot on internet when I could not find any appropriate ExecutorService which would allow one to mention priority of the task at the time of submitting it to ExecutorService; that was the time when I decided to code one myself.
 

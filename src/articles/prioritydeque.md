@@ -1,13 +1,14 @@
 ---
-title: "PriorityDeque and PriorityBlockingDeque using Min-Max Heap in Java"
-description: " "
+title: "PriorityDeque and PriorityBlockingDeque in Java"
+description: "Priority base deque implementation using min-max heap"
 tags:
   - priority deque
   - priority blocking deque
   - Java
 date: 2016-10-08
+image: /static/images/queue.jpg
 ---
-![PriorityDeque](/static/images/queue.jpg)
+![PriorityDeque]({{ image }})
 
 I always wondered that if Java provides PriorityQueue then why not PriorityDeque. I mean how hard it is to implement a Deque based on a Min-Max Heap technique. A question that only Oracle can now answer.
 
