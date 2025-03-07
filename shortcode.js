@@ -36,4 +36,19 @@ eleventyConfig.addShortcode("imagesmall",(image,title) =>`<div class="grid"><div
 eleventyConfig.addShortcode("video",(video,title) =>`<iframe title="${title}" loading="lazy" src="${video}"></iframe>`,);
 eleventyConfig.addShortcode("videosmall",(video,title) =>`<div class="grid"><div><iframe title="${title}" loading="lazy" src="${video}"></iframe></div><div></div></div>`,);
 eleventyConfig.addShortcode("github",(title, url) =>`<div><img src="/static/images/github-mark.png" loading="lazy" title="${title}" height="56px", width="50px"/> <a href="${url}" class="primary">${title}</a></div>`,);
+eleventyConfig.addShortcode("downloadsourcefilenote", (optionalnote)=>{
+    let note = optionalnote
+    if(!optionalnote)
+        note = "**click 'Download' at top right corner of code block for whole file"
+    return `<sup><sub>${note}</sub></sup>`
+});
+eleventyConfig.addShortcode("indent", (optionalnumber)=>{
+    let number = optionalnumber
+    if(!optionalnumber)
+        number=4
+    let indent = ""
+    for(let i=0;i<number;i++)
+        indent = `${indent}&nbsp;`
+    return indent
+});
 };

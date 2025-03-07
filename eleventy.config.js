@@ -2,6 +2,7 @@ import { IdAttributePlugin, InputPathToUrlTransformPlugin, HtmlBasePlugin } from
 import navigation from "@11ty/eleventy-navigation"
 import markdownIt from "markdown-it";
 import markdownItAttr from "markdown-it-attrs";
+import markdownItAttrSup from "markdown-it-sup"
 import {tabber, tab} from "./tabs.js"
 import pluginFilters from "./filters.js";
 import pluginShortcodes from "./shortcode.js";
@@ -32,9 +33,9 @@ export default function (eleventyConfig) {
     eleventyConfig.setLibrary("md", markdownIt(options));
     eleventyConfig.amendLibrary("md", (mdLib) => mdLib.disable("code"))
     eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownItAttr))
+    eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownItAttrSup))
     eleventyConfig.addPassthroughCopy("static")
     eleventyConfig.addPassthroughCopy({"node_modules/@11ty/is-land/*.js": "static/js/"});
-    eleventyConfig.addPassthroughCopy({"node_modules/jquery/dist/jquery.min.js": "static/js/jquery.min.js"});
     eleventyConfig.addPassthroughCopy({"node_modules/@zachleat/heading-anchors/heading-anchors.js": "static/js/heading-anchors.js"});
 
     eleventyConfig.addPairedShortcode("tabber", tabber)

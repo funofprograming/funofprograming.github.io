@@ -1,12 +1,13 @@
 ---
 title: "Java Enum Validator"
-description: " "
+description: "Java enum validation using Java Bean Validation framework"
 tags:
   - enum-validator
   - Java
 date: 2016-09-29
+image: /static/images/validation.jpg
 ---
-![JavaEnumValidator](/static/images/validation.jpg)
+![JavaEnumValidator]({{ image }})
 
 A lot of times while designing web services some data attribute to be exchanged is an enum. So how to validate such data at service end. One way is to write boilerplate code for this purpose but then what’s the use of Java Bean Validation. So how to use Java Bean Validation for validating a String attribute against an Enum values.First the annotation @Enum
 

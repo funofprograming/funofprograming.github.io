@@ -33,17 +33,7 @@
 		}
 	],
 	"indexcss": "/static/css/index.css",
-	"jqueryuicss": "/static/css/jquery-ui.min.css",
-    "jqueryuistructurecss": "/static/css/jquery-ui.structure.min.css",
-    "jqueryuithemecss": "/static/css/jquery-ui.theme.min.css",
-    "prismcss": "/static/css/prism.css",
-	"picocss": "/static/css/pico.min.css",
-	"messageboxcss": "/static/css/message-box.css",
-    "jqueryjs": "/static/js/jquery.min.js",
-    "jqueryuijs": "/static/js/jquery-ui.min.js",
-    "islandjs": "/static/js/is-land.js",
-	"headinganchorsjs": "/static/js/heading-anchors.js",
-	"lampjs": "/static/js/lamp.js",
-	"prismjs": "/static/js/prism.js"
+	"islandjs": "/static/js/is-land.js",
+	"headinganchorsjs": "/static/js/heading-anchors.js"
 }
 

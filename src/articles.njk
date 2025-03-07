@@ -12,7 +12,7 @@ testdata:
 permalink: "articles/{% if pagination.pageNumber > 0 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
 ---
 {%- for item in pagination.items %}
-<h3><a href="{{item.url}}">{{item.data.title}}</a></h3>
-<p>{{item.data.description}}</p>
+<h3><a href="{{item.url}}"><img src="{{ item.data.image }}" style="max-width: 5%;"/>  {{item.data.title}}</a></h3>
+<p>{% indent 10 %}{{item.data.description}}</p>
 <hr/>
 {% endfor -%}
