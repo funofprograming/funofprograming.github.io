@@ -1,2 +1,12 @@
 {% set css %} {% include "css/style.css" %} {% endset %}
 <style>{{ css | cssmin | safe }}</style>
+<style>
+    pre[class*=language-]:after, 
+    pre[class*=language-]:before {
+        box-shadow:none
+    }
+
+    nav {
+        justify-content: space-evenly;
+    }
+</style>

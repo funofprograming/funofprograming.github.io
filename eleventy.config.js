@@ -34,7 +34,6 @@ export default function (eleventyConfig) {
     eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(markdownItAttr))
     eleventyConfig.addPassthroughCopy("static")
     eleventyConfig.addPassthroughCopy({"node_modules/@11ty/is-land/*.js": "static/js/"});
-    eleventyConfig.addPassthroughCopy({"node_modules/jquery/dist/jquery.min.js": "static/js/jquery.min.js"});
     eleventyConfig.addPassthroughCopy({"node_modules/@zachleat/heading-anchors/heading-anchors.js": "static/js/heading-anchors.js"});
 
     eleventyConfig.addPairedShortcode("tabber", tabber)
