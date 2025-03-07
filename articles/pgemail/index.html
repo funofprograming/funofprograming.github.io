@@ -4,20 +4,20 @@
 <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Java Enum Validator</title>
-<meta content="Java Enum Validator" property="og:title">
-<meta content="Java Enum Validator" name="title">
-<meta content="Java Enum Validator" property="og:site_name">
-<meta content="Java enum validation using Java Bean Validation framework" name="description">
-<meta content="Java enum validation using Java Bean Validation framework" property="og:description">
+<title>E-Mail notifications in Oracle PL/SQL</title>
+<meta content="E-Mail notifications in Oracle PL/SQL" property="og:title">
+<meta content="E-Mail notifications in Oracle PL/SQL" name="title">
+<meta content="E-Mail notifications in Oracle PL/SQL" property="og:site_name">
+<meta content="Sending email (optionally with CLOB/BLOB attachments) using Oracle PL/SQL procedures" name="description">
+<meta content="Sending email (optionally with CLOB/BLOB attachments) using Oracle PL/SQL procedures" property="og:description">
 
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://funofprograming.github.io/articles/javaEnumValidator/">
+<link rel="canonical" href="https://funofprograming.github.io/articles/pgemail/">
 <meta name="language" content="en">
 <meta name="locale" content="en_IN">
 <meta property="og:locale" content="en_IN">
 <meta name="generator" content="Eleventy v3.0.0"> 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"Fun of coding with interesting projects and problems","headline":"Fun of Programing - Fun of coding with interesting projects and problems","name":"Fun of Programing","url":"https://funofprograming.github.io/articles/javaEnumValidator/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"Fun of coding with interesting projects and problems","headline":"Fun of Programing - Fun of coding with interesting projects and problems","name":"Fun of Programing","url":"https://funofprograming.github.io/articles/pgemail/"}</script>
 <meta name="generator" content="Eleventy v3.0.0">
 <meta name="color-scheme" content="light dark">
 <link rel="stylesheet" href="/static/css/index.css">
@@ -94,8 +94,8 @@
 <main id="skip">
 <header class="container">
 <hgroup>
-<h1 id="java-enum-validator"><a href="/articles/javaEnumValidator/">Java Enum Validator</a></h1>
-<h2 id="java-enum-validation-using-java-bean-validation-framework"><em>Java enum validation using Java Bean Validation framework</em></h2>
+<h1 id="e-mail-notifications-in-oracle-pl-sql"><a href="/articles/pgemail/">E-Mail notifications in Oracle PL/SQL</a></h1>
+<h2 id="sending-email-optionally-with-clob-blob-attachments-using-oracle-pl-sql-procedures"><em>Sending email (optionally with CLOB/BLOB attachments) using Oracle PL/SQL procedures</em></h2>
 </hgroup>
 </header>
 <div class="container snls snts">
@@ -103,104 +103,267 @@
 <div class="container">
     <p>
     <a href="/tags/articles/"><small>articles</small></a> ,
-    <a href="/tags/enum-validator/"><small>enum-validator</small></a> ,
+    <a href="/tags/priority-executor/"><small>priority executor</small></a> ,
     <a href="/tags/java/"><small>Java</small></a></p>
 </div>
-<p><time datetime="2016-09-29">29 September 2016</time></p>
-<p><img src="/static/images/validation.jpg" alt="JavaEnumValidator"></p>
-<p>A lot of times while designing web services some data attribute to be exchanged is an enum. So how to validate such data at service end. One way is to write boilerplate code for this purpose but then what’s the use of Java Bean Validation. So how to use Java Bean Validation for validating a String attribute against an Enum values.First the annotation @Enum</p>
-<pre><code class="language-java">import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
- 
-import javax.validation.Constraint;
-import javax.validation.Payload;
- 
-@Documented
-@Constraint(validatedBy = {EnumValueValidator.class})
-@Target({ ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER })
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Enum
-{
-    public abstract String message() default &quot;Invalid value. This is not permitted.&quot;;
-     
-    public abstract Class&lt;?&gt;[] groups() default {};
-  
-    public abstract Class&lt;? extends Payload&gt;[] payload() default {};
-     
-    public abstract Class&lt;? extends java.lang.Enum&lt;?&gt;&gt; enumClass();
-     
-    public abstract boolean ignoreCase() default false;
-}
+<p><time datetime="2016-07-27">27 July 2016</time></p>
+<p><img src="/static/images/email-logo.webp" alt="PGNotifier"></p>
+<p>How to send eMail notifications using PL/SQL? I know this has been answered several times before. So what’s new here? Following is:</p>
+<ul>
+<li>Complete stand alone component</li>
+<li>Completely compatible with MIME standards</li>
+<li>Can send email as ‘To’ and ‘Cc’</li>
+<li>Can send mail to more than one recipient</li>
+<li>Can send mail with HTML message</li>
+<li>Complete mail sending functionality along with CLOB and BLOB attachments</li>
+<li>Can be used to send attachments as selected from database tables itself.</li>
+<li>Can send mail with more than one mail attachments</li>
+<li>Does not create any files on Oracle server for sending attachments</li>
+<li>Absolutely ready-to-use for calling from any Oracle PL/SQL code</li>
+</ul>
+<p>Spec &amp; Data Structures used are:</p>
+<p><sup><sub>**click 'Download' at top right corner of code block for whole file</sub></sup></p>
+<pre id="PG_NOTIFIER_spec" data-src="/static/plsql/PG_NOTIFIER_spec.plsql" data-download-link="" data-line="4-25,35-53"></pre>
+<p>Line numbers <a href="#PG_NOTIFIER_spec.4-25">4-25</a> specify the data structures to be used :</p>
+<p><strong>NOTIFICATION_RECIPIENTS</strong> is a pl/sql array, that stores strings, used to hold email ids to which mail is to be sent.</p>
+<p><strong>MAIL_ATTACHMENT_CLOB</strong> is a record type used to hold information about One CLOB attachment. It holds information about attachment name, attachment data, attachment mime type (like txt, csv etc) and attachment character set.</p>
+<p><strong>ARRAY_MAIL_ATTACHMENT_CLOB</strong> is a pl/sql array that stores MAIL_ATTACHMENT_CLOB. It is essentially used to hold and send CLOB attachments.</p>
+<p><strong>MAIL_ATTACHMENT_ BLOB</strong> is a record type used to hold information about One BLOB attachment. It holds information about attachment name, attachment data and attachment mime type (like pdf, xls etc).</p>
+<p><strong>ARRAY_MAIL_ATTACHMENT_BLOB</strong> is a pl/sql array that stores MAIL_ATTACHMENT_BLOB. It is essentially used to hold and send CLOB attachments.</p>
+<p>Line numbers <a href="#PG_NOTIFIER_spec.35-53">35-53</a> specify the main procedures that can be called by an external procedure.</p>
+<p>Procedure <strong>SET_BASE64</strong> is used to on/off base64 for BLOB attachments as some SMTP servers may not support encoding other than 7bit ASCII.</p>
+<p>Procedure <strong>NOTIFY</strong> is the main procedure that is used to send mails. Following is the explanation of each of its parameters:</p>
+<p><strong>P_MAILHOST</strong> :- Host name or IP of the SMTP server</p>
+<p><strong>P_MAILPORT</strong> :- SMTP server port</p>
+<p><strong>P_SENDER</strong> :- Valid email id of the mail sender. Valid here means correct format but not necessarily correct id; like “first.last” is invalid but “first.last@unknown.com” is valid.</p>
+<p><strong>P_TO_RECIPIENTS</strong> :- PL/SQL array of email ids of all the ‘To’ recipients of the mail.</p>
+<p><strong>P_SUBJECT</strong> :- Mail subject</p>
+<p><strong>P_MESSAGE_TEXT</strong> :- Optional Text message.</p>
+<p><strong>P_MESSAGE_HTML</strong> :- Optional HTML message.</p>
+<p><strong>P_ATTACHMENTS_CLOB</strong> :- Optional PL/SQL array of CLOB attachments.</p>
+<p><strong>P_ATTACHMENTS_BLOB</strong> :- Optional PL/SQL array of BLOB attachments.</p>
+<p><strong>P_CC_RECIPIENTS</strong> :- Optional PL/SQL array of email ids of all the ‘Cc’ recipients of the mail</p>
+<p>Implementation/body of above spec will be like this:</p>
+<p><sup><sub>**click 'Download' at top right corner of code block for whole file</sub></sup></p>
+<pre data-src="/static/plsql/PG_NOTIFIER_body.plsql" data-download-link="" data-range="1,11"></pre>
+<p>Now for some examples:</p>
+<p>Sending a plain text message:</p>
+<pre><code class="language-plsql">BEGIN
+PG_NOTIFIER.NOTIFY (
+P_MAILHOST =&gt; ‘some.smtp.server.com’
+, P_MAILPORT =&gt; 25
+, P_SENDER =&gt; ‘someone@something.com’
+, P_TO_RECIPIENTS =&gt; PG_NOTIFIER.NOTIFICATION_RECIPIENTS(‘some1@some.com’, ‘some2@some.com’)
+, P_SUBJECT =&gt; ‘subject’
+, P_MESSAGE_TEXT =&gt; ‘some text’
+);
+END;
 </code></pre>
-<p>Now this annotation @Enum provides a boolean option of ignoring the case while validation. We will see next how it is used in EnumValueValidator class</p>
-<pre><code class="language-java">import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
- 
-public class EnumValueValidator implements ConstraintValidator&lt;Enum, String&gt;
-{
-    private Enum annotation;
- 
-    @Override
-    public void initialize(Enum annotation)
-    {
-        this.annotation = annotation;
-    }
- 
-    @Override
-    public boolean isValid(String valueForValidation, ConstraintValidatorContext constraintValidatorContext)
-    {
-        boolean result = false;
-         
-        Object[] enumValues = this.annotation.enumClass().getEnumConstants();
-         
-        if(enumValues != null)
-        {
-            for(Object enumValue:enumValues)
-            {
-                if(valueForValidation.equals(enumValue.toString()) 
-                   || (this.annotation.ignoreCase() &amp;&amp; valueForValidation.equalsIgnoreCase(enumValue.toString())))
-                {
-                    result = true; 
-                    break;
-                }
-            }
-        }
-         
-        return result;
-    }
-}
+<p>Sending a plain text mail with Cc:</p>
+<pre><code class="language-plsql">BEGIN
+PG_NOTIFIER.NOTIFY (
+PG_NOTIFIER.P_MAILHOST =&gt; ‘some.smtp.server.com’
+, P_MAILPORT =&gt; 25
+, P_SENDER =&gt; ‘someone@something.com’
+, P_TO_RECIPIENTS =&gt; PG_NOTIFIER.NOTIFICATION_RECIPIENTS(‘some1@some.com’, ‘some2@some.com’)
+, P_SUBJECT =&gt; ‘subject’
+, P_MESSAGE_TEXT =&gt; ‘some text’
+, P_CC_RECIPIENTS =&gt; PG_NOTIFIER.NOTIFICATION_RECIPIENTS(‘some3@some.com’, ‘some4@some.com’)
+);
+END;
 </code></pre>
-<p>As we can see from class EnumValueValidator’s method isValid, the ignoreCase option is used to match values while ignoring case of the values being matched. This validator will match the incoming value that needs to be checked with String representation of the Enum against which validation is to be performed.</p>
-<p>Now how to use it. Consider the following enum</p>
-<pre><code class="language-java">public enum SampleEnum
-{
-    VALUE1,
-    VALUE2,
-    VALUE3;
-}
+<p>Sending a mail with HTML message:</p>
+<pre><code class="language-plsql">DECLARE
+HTML_MESSAGE CLOB;
+BEGIN
+/*
+* WRITE CODE TO GENERATE HTML MESSAGE
+*/
+PG_NOTIFIER.NOTIFY (
+P_MAILHOST =&gt; ‘some.smtp.server.com’
+, P_MAILPORT =&gt; 25
+, P_SENDER =&gt; ‘someone@something.com’
+, P_TO_RECIPIENTS =&gt; PG_NOTIFIER.NOTIFICATION_RECIPIENTS(‘some1@some.com’, ‘some2@some.com’)
+, P_SUBJECT =&gt; ‘subject’
+, P_MESSAGE_TEXT =&gt; ‘some text’
+, P_MESSAGE_HTML =&gt; HTML_MESSAGE
+, P_CC_RECIPIENTS =&gt; PG_NOTIFIER.NOTIFICATION_RECIPIENTS(‘some3@some.com’, ‘some4@some.com’)
+);
+END;
 </code></pre>
-<p>Now consider the JavaBean that gets created upon getting values from some source like a Web service/client, database, network, etc</p>
-<pre><code class="language-java">public class SampleBean
-{
-    @Enum(enumClass=SampleEnum.class, ignoreCase=true) 
-    String sample;
+<p>Sending mail with CLOB attachments:</p>
+<pre><code class="language-plsql">DECLARE
+CLOB_ATTACH_ARRAY PG_NOTIFIER.ARRAY_MAIL_ATTACHMENT_CLOB := PG_NOTIFIER.ARRAY_MAIL_ATTACHMENT_CLOB();
+CLOB_ATTACH1 PG_NOTIFIER.MAIL_ATTACHMENT_CLOB;
+CLOB_ATTACH2 PG_NOTIFIER.MAIL_ATTACHMENT_CLOB;
+CLOB_DATA1 CLOB;
+CLOB_DATA2 CLOB;
  
-    public String getSample()
-    {
-        return sample;
-    }
+BEGIN
  
-    public void setSample(String sample)
-    {
-        this.sample = sample;
-    }
-     
-}
+/*
+ *GET CLOB DATA INTO CLOB_DATA1
+ */
+ 
+CLOB_ATTACH1.ATTACHMENT_FILE_NAME := ‘ATTACH1’;
+CLOB_ATTACH1.ATTACHMENT_DATA := CLOB_DATA1;
+CLOB_ATTACH1.ATTACHMENT_MIME_TYPE := ‘TYPE1’;
+CLOB_ATTACH1.ATTACHMENT_CHARSET := ‘CHRSET1’;
+CLOB_ATTACH_ARRAY.EXTEND(1);
+CLOB_ATTACH_ARRAY(CLOB_ATTACH_ARRAY.COUNT()) := CLOB_ATTACH1;
+ 
+/*
+ *GET CLOB DATA INTO CLOB_DATA2
+ */
+ 
+CLOB_ATTACH2.ATTACHMENT_FILE_NAME := ‘ATTACH2’;
+CLOB_ATTACH2.ATTACHMENT_DATA := CLOB_DATA2;
+CLOB_ATTACH2.ATTACHMENT_MIME_TYPE := ‘TYPE2’;
+CLOB_ATTACH2.ATTACHMENT_CHARSET := ‘CHRSET2’;
+CLOB_ATTACH_ARRAY.EXTEND(1);
+CLOB_ATTACH_ARRAY(CLOB_ATTACH_ARRAY.COUNT()) := CLOB_ATTACH2;
+ 
+/*
+ *Attach as many as.
+ */
+ 
+PG_NOTIFIER.NOTIFY (
+P_MAILHOST =&gt; ‘some.smtp.server.com’
+, P_MAILPORT =&gt; 25
+, P_SENDER =&gt; ‘someone@something.com’
+, P_TO_RECIPIENTS =&gt; PG_NOTIFIER.NOTIFICATION_RECIPIENTS(‘some1@some.com’, ‘some2@some.com’)
+, P_SUBJECT =&gt; ‘subject’
+, P_MESSAGE_TEXT =&gt; ‘some text’
+, P_ATTACHMENTS_CLOB =&gt; CLOB_ATTACH_ARRAY
+, P_CC_RECIPIENTS =&gt; PG_NOTIFIER.NOTIFICATION_RECIPIENTS(‘some3@some.com’, ‘some4@some.com’)
+);
+END;
 </code></pre>
-<p>In this scenario our validator will validate the sample attribute of SampleBean and check if its value is same as one of the SampleEnum values.This is how we can extend JavaBean validation to have a Enum validator.</p>
+<p>Sending Mail with BLOB attachments:</p>
+<pre><code class="language-plsql">DECLARE
+BLOB_ATTACH_ARRAY PG_NOTIFIER.ARRAY_MAIL_ATTACHMENT_BLOB := ARRAY_MAIL_ATTACHMENT_BLOB();
+BLOB_ATTACH1 PG_NOTIFIER.MAIL_ATTACHMENT_BLOB;
+BLOB_ATTACH2 PG_NOTIFIER.MAIL_ATTACHMENT_BLOB;
+BLOB_DATA1 BLOB;
+BLOB_DATA2 BLOB;
+ 
+BEGIN
+ 
+/*
+ *GET CLOB DATA INTO BLOB_DATA1
+ */
+ 
+BLOB_ATTACH1.ATTACHMENT_FILE_NAME := ‘ATTACH1’;
+BLOB_ATTACH1.ATTACHMENT_DATA := BLOB_DATA1;
+BLOB_ATTACH1.ATTACHMENT_MIME_TYPE := ‘TYPE1’;
+BLOB_ATTACH_ARRAY.EXTEND(1);
+BLOB_ATTACH_ARRAY(BLOB_ATTACH_ARRAY.COUNT()) := BLOB_ATTACH1;
+ 
+/*
+ *GET CLOB DATA INTO BLOB_DATA2
+ */
+ 
+BLOB_ATTACH2.ATTACHMENT_FILE_NAME := ‘ATTACH2’;
+BLOB_ATTACH2.ATTACHMENT_DATA := BLOB_DATA2;
+BLOB_ATTACH2.ATTACHMENT_MIME_TYPE := ‘TYPE2’;
+BLOB_ATTACH_ARRAY.EXTEND(1);
+BLOB_ATTACH_ARRAY(BLOB_ATTACH_ARRAY.COUNT()) := BLOB_ATTACH2;
+ 
+/*
+ *Attach as many as.
+ */
+ 
+PG_NOTIFIER.NOTIFY (
+P_MAILHOST =&gt; ‘some.smtp.server.com’
+, P_MAILPORT =&gt; 25
+, P_SENDER =&gt; ‘someone@something.com’
+, P_TO_RECIPIENTS =&gt; PG_NOTIFIER.NOTIFICATION_RECIPIENTS(‘some1@some.com’, ‘some2@some.com’)
+, P_SUBJECT =&gt; ‘subject’
+, P_MESSAGE_TEXT =&gt; ‘some text’
+, P_ATTACHMENTS_BLOB =&gt; BLOB_ATTACH_ARRAY
+, P_CC_RECIPIENTS =&gt; PG_NOTIFIER.NOTIFICATION_RECIPIENTS(‘some3@some.com’, ‘some4@some.com’)
+);
+END;
+</code></pre>
+<p>Sending mail with both BLOB and CLOB attachments:</p>
+<pre><code class="language-plsql">DECLARE
+CLOB_ATTACH_ARRAY PG_NOTIFIER.ARRAY_MAIL_ATTACHMENT_CLOB := PG_NOTIFIER.ARRAY_MAIL_ATTACHMENT_CLOB();
+CLOB_ATTACH1 PG_NOTIFIER.MAIL_ATTACHMENT_CLOB;
+CLOB_ATTACH2 PG_NOTIFIER.MAIL_ATTACHMENT_CLOB;
+CLOB_DATA1 CLOB;
+CLOB_DATA2 CLOB;
+ 
+BLOB_ATTACH_ARRAY PG_NOTIFIER.ARRAY_MAIL_ATTACHMENT_BLOB := ARRAY_MAIL_ATTACHMENT_BLOB();
+BLOB_ATTACH1 PG_NOTIFIER.MAIL_ATTACHMENT_BLOB;
+BLOB_ATTACH2 PG_NOTIFIER.MAIL_ATTACHMENT_BLOB;
+BLOB_DATA1 BLOB;
+BLOB_DATA2 BLOB;
+ 
+BEGIN
+ 
+/*
+ *GET CLOB DATA INTO CLOB_DATA1
+ */
+ 
+CLOB_ATTACH1.ATTACHMENT_FILE_NAME := ‘ATTACH1’;
+CLOB_ATTACH1.ATTACHMENT_DATA := CLOB_DATA1;
+CLOB_ATTACH1.ATTACHMENT_MIME_TYPE := ‘TYPE1’;
+CLOB_ATTACH1.ATTACHMENT_CHARSET := ‘CHRSET1’;
+CLOB_ATTACH_ARRAY.EXTEND(1);
+CLOB_ATTACH_ARRAY(CLOB_ATTACH_ARRAY.COUNT()) := CLOB_ATTACH1;
+ 
+/*
+ *GET CLOB DATA INTO CLOB_DATA2
+ */
+ 
+CLOB_ATTACH2.ATTACHMENT_FILE_NAME := ‘ATTACH2’;
+CLOB_ATTACH2.ATTACHMENT_DATA := CLOB_DATA2;
+CLOB_ATTACH2.ATTACHMENT_MIME_TYPE := ‘TYPE2’;
+CLOB_ATTACH2.ATTACHMENT_CHARSET := ‘CHRSET2’;
+CLOB_ATTACH_ARRAY.EXTEND(1);
+CLOB_ATTACH_ARRAY(CLOB_ATTACH_ARRAY.COUNT()) := CLOB_ATTACH2;
+ 
+/*
+ *Attach as many as CLOB.
+ */
+ 
+/*
+ *GET CLOB DATA INTO BLOB_DATA1
+ */
+ 
+BLOB_ATTACH1.ATTACHMENT_FILE_NAME := ‘ATTACH1’;
+BLOB_ATTACH1.ATTACHMENT_DATA := BLOB_DATA1;
+BLOB_ATTACH1.ATTACHMENT_MIME_TYPE := ‘TYPE1’;
+BLOB_ATTACH_ARRAY.EXTEND(1);
+BLOB_ATTACH_ARRAY(BLOB_ATTACH_ARRAY.COUNT()) := BLOB_ATTACH1;
+ 
+/*
+ *GET CLOB DATA INTO BLOB_DATA2
+ */
+ 
+BLOB_ATTACH2.ATTACHMENT_FILE_NAME := ‘ATTACH2’;
+BLOB_ATTACH2.ATTACHMENT_DATA := BLOB_DATA2;
+BLOB_ATTACH2.ATTACHMENT_MIME_TYPE := ‘TYPE2’;
+BLOB_ATTACH_ARRAY.EXTEND(1);
+BLOB_ATTACH_ARRAY(BLOB_ATTACH_ARRAY.COUNT()) := BLOB_ATTACH2;
+ 
+/*
+ *Attach as many as BLOB.
+ */
+ 
+PG_NOTIFIER.NOTIFY (
+P_MAILHOST =&gt; ‘some.smtp.server.com’
+, P_MAILPORT =&gt; 25
+, P_SENDER =&gt; ‘someone@something.com’
+, P_TO_RECIPIENTS =&gt; PG_NOTIFIER.NOTIFICATION_RECIPIENTS(‘some1@some.com’, ‘some2@some.com’)
+, P_SUBJECT =&gt; ‘subject’
+, P_MESSAGE_TEXT =&gt; ‘some text’
+, P_ATTACHMENTS_CLOB =&gt; CLOB_ATTACH_ARRAY
+, P_ATTACHMENTS_BLOB =&gt; BLOB_ATTACH_ARRAY
+, P_CC_RECIPIENTS =&gt; PG_NOTIFIER.NOTIFICATION_RECIPIENTS(‘some3@some.com’, ‘some4@some.com’)
+);
+END;
+</code></pre>
 
 
 
@@ -212,7 +375,7 @@ Suggestions for improvements are welcome.
 
 <ul>
 <li>
-<a href="/articles/pgemail/" title="E-Mail notifications in Oracle PL/SQL" role="button" class="primary">
+<a href="/articles/fibonacci/" title="Fibonacci using recursion – Really Easy or Hard??" role="button" class="primary">
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"></path>
 </svg> <small>Previous</small>
@@ -222,7 +385,7 @@ Suggestions for improvements are welcome.
 
 <ul>
 <li>
-<a href="/articles/prioritydeque/" title="PriorityDeque and PriorityBlockingDeque in Java" role="button" class="primary">
+<a href="/articles/javaEnumValidator/" title="Java Enum Validator" role="button" class="primary">
 <small>Next</small> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
 </svg>

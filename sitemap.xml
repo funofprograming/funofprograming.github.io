@@ -7,42 +7,57 @@
 	</url>
 	
 	<url>
+		<loc>https://funofprograming.github.io/articles/pgemail/</loc>
+		<lastmod>2016-07-27</lastmod>
+	</url>
+	
+	<url>
 		<loc>https://funofprograming.github.io/articles/javaEnumValidator/</loc>
 		<lastmod>2016-09-29</lastmod>
 	</url>
 	
 	<url>
+		<loc>https://funofprograming.github.io/articles/prioritydeque/</loc>
+		<lastmod>2016-10-08</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://funofprograming.github.io/articles/priorityexecutor/</loc>
+		<lastmod>2016-10-08</lastmod>
+	</url>
+	
+	<url>
 		<loc>https://funofprograming.github.io/about/</loc>
-		<lastmod>2025-03-06</lastmod>
+		<lastmod>2025-03-07</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://funofprograming.github.io/articles/</loc>
-		<lastmod>2025-03-06</lastmod>
+		<lastmod>2025-03-07</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://funofprograming.github.io/</loc>
-		<lastmod>2025-03-06</lastmod>
+		<lastmod>2025-03-07</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://funofprograming.github.io/projects/</loc>
-		<lastmod>2025-03-06</lastmod>
+		<lastmod>2025-03-07</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://funofprograming.github.io/projects/01-application-context-util/</loc>
-		<lastmod>2025-03-06</lastmod>
+		<lastmod>2025-03-07</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://funofprograming.github.io/search/</loc>
-		<lastmod>2025-03-06</lastmod>
+		<lastmod>2025-03-07</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://funofprograming.github.io/tags/</loc>
-		<lastmod>2025-03-06</lastmod>
+		<lastmod>2025-03-07</lastmod>
 	</url>
 </urlset>

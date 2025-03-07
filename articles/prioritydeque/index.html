@@ -4,20 +4,20 @@
 <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects</title>
-<meta content="Projects" property="og:title">
-<meta content="Projects" name="title">
-<meta content="Projects" property="og:site_name">
-<meta content="Update from my projects" name="description">
-<meta content="Update from my projects" property="og:description">
+<title>PriorityDeque and PriorityBlockingDeque in Java</title>
+<meta content="PriorityDeque and PriorityBlockingDeque in Java" property="og:title">
+<meta content="PriorityDeque and PriorityBlockingDeque in Java" name="title">
+<meta content="PriorityDeque and PriorityBlockingDeque in Java" property="og:site_name">
+<meta content="Priority base deque implementation using min-max heap" name="description">
+<meta content="Priority base deque implementation using min-max heap" property="og:description">
 
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://funofprograming.github.io/projects/">
+<link rel="canonical" href="https://funofprograming.github.io/articles/prioritydeque/">
 <meta name="language" content="en">
 <meta name="locale" content="en_IN">
 <meta property="og:locale" content="en_IN">
 <meta name="generator" content="Eleventy v3.0.0"> 
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"Fun of coding with interesting projects and problems","headline":"Fun of Programing - Fun of coding with interesting projects and problems","name":"Fun of Programing","url":"https://funofprograming.github.io/projects/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"Fun of coding with interesting projects and problems","headline":"Fun of Programing - Fun of coding with interesting projects and problems","name":"Fun of Programing","url":"https://funofprograming.github.io/articles/prioritydeque/"}</script>
 <meta name="generator" content="Eleventy v3.0.0">
 <meta name="color-scheme" content="light dark">
 <link rel="stylesheet" href="/static/css/index.css">
@@ -94,16 +94,128 @@
 <main id="skip">
 <header class="container">
 <hgroup>
-<h1 id="projects"><a href="/projects/">Projects</a></h1>
-<h2 id="update-from-my-projects"><em>Update from my projects</em></h2>
+<h1 id="prioritydeque-and-priorityblockingdeque-in-java"><a href="/articles/prioritydeque/">PriorityDeque and PriorityBlockingDeque in Java</a></h1>
+<h2 id="priority-base-deque-implementation-using-min-max-heap"><em>Priority base deque implementation using min-max heap</em></h2>
 </hgroup>
 </header>
 <div class="container snls snts">
 <heading-anchors>
+<div class="container">
+    <p>
+    <a href="/tags/articles/"><small>articles</small></a> ,
+    <a href="/tags/priority-deque/"><small>priority deque</small></a> ,
+    <a href="/tags/priority-blocking-deque/"><small>priority blocking deque</small></a> ,
+    <a href="/tags/java/"><small>Java</small></a></p>
+</div>
+<p><time datetime="2016-10-08">08 October 2016</time></p>
+<p><img src="/static/images/queue.jpg" alt="PriorityDeque"></p>
+<p>I always wondered that if Java provides PriorityQueue then why not PriorityDeque. I mean how hard it is to implement a Deque based on a Min-Max Heap technique. A question that only Oracle can now answer.</p>
+<p>So for the moment friends we shall have some fun in programing.</p>
+<p>PriorityDeque should be something like this:</p>
+<p><sup><sub>**click 'Download' at top right corner of code block for whole file</sub></sup></p>
+<pre data-src="/static/java/PriorityDeque.java" data-range="12,51" data-download-link=""></pre>
+<p>Which means it is a Deque because of which it is also Queue and so Collection as well. I created this deque using Min-Max heap algorithm which means it is not doing silly Collections.sort again and again on each insertion. All the insertion operations in this deque take O(log n) and all removal operations are constant time operations.</p>
+<p>Now lets see how to use it. For simplicity we will store integers in our PriorityDeque. Check the following example:</p>
+<pre><code class="language-java">public static void main(String[] args) 
+{ 
+    PriorityDeque&lt;Integer&gt; q = new PriorityDeque&lt;&gt;();
+ 
+    Random r = new Random();
+ 
+    System.out.print(&quot;Input: &quot;);
+    for (int i = 0; i &lt; 100; i++) 
+    { 
+        int x = r.nextInt(1000);
+        System.out.print(x + &quot; &quot;);
+        q.offer(x); 
+    } 
+ 
+    System.out.println(); 
+    System.out.print(&quot;Output: &quot;); 
+ 
+    while (q.size() &gt; 0)
+        System.out.print(q.pollFirst() + &quot; &quot;); 
+}
+</code></pre>
+<p>In this example we store integers in the deque and then start taking out from front of the deque. One of the output that I got was (Each time it is run the output will be different because of Random but order of elements in Output will always be same)</p>
+<pre><code class="language-text">Input: 602 368 334 696 239 539 722 343 918 313 100 217 988 380 476 724 643 613 110 237 725 17 512 705 663 304 244 760 88 190 549 427 292 883 815 614 497 693 176 313 909 909 140 584 786 215 866 523 552 306 849 216 413 872 37 779 67 392 468 767 790 87 80 191 592 357 945 62 531 611 176 412 315 818 218 137 869 998 679 92 176 658 814 541 119 670 191 817 767 955 260 595 387 398 949 871 474 731 271 786
+Output: 17 37 62 67 80 87 88 92 100 110 119 137 140 176 176 176 190 191 191 215 216 217 218 237 239 244 260 271 292 304 306 313 313 315 334 343 357 368 380 387 392 398 412 413 427 468 474 476 497 512 523 531 539 541 549 552 584 592 595 602 611 613 614 643 658 663 670 679 693 696 705 722 724 725 731 760 767 767 779 786 786 790 814 815 817 818 849 866 869 871 872 883 909 909 918 945 949 955 988 998
+</code></pre>
+<p>Next we store integers again and this time we will take out from end of deque.</p>
+<pre><code class="language-java">public static void main(String[] args)
+{
+    PriorityDeque&lt;Integer&gt; q = new PriorityDeque&lt;&gt;();
+ 
+    Random r = new Random();
+ 
+    System.out.print(&quot;Input: &quot;);
+    for (int i = 0; i &lt; 100; i++)
+    {
+        int x = r.nextInt(1000);
+        System.out.print(x + &quot; &quot;);
+        q.offer(x);
+    }
+ 
+    System.out.println();
+    System.out.print(&quot;Output: &quot;);
+ 
+    while (q.size() &gt; 0)
+        System.out.print(q.pollLast() + &quot; &quot;);
+}
+</code></pre>
+<p>Output that I got this time was (Each time it is run the output will be different because of Random but order of elements in Output will always be same)</p>
+<pre><code class="language-text">Input: 248 498 757 841 808 971 502 95 512 460 76 778 931 696 354 472 415 689 951 556 959 813 542 455 238 12 66 74 218 972 831 650 928 984 379 248 46 843 172 380 811 237 499 325 651 249 390 792 599 555 691 555 209 288 143 301 813 827 391 148 986 105 782 506 656 243 862 836 996 622 410 816 127 424 335 883 13 944 354 709 440 842 44 178 381 639 35 597 54 53 10 875 71 168 129 993 676 620 687 530
+Output: 996 993 986 984 972 971 959 951 944 931 928 883 875 862 843 842 841 836 831 827 816 813 813 811 808 792 782 778 757 709 696 691 689 687 676 656 651 650 639 622 620 599 597 556 555 555 542 530 512 506 502 499 498 472 460 455 440 424 415 410 391 390 381 380 379 354 354 335 325 301 288 249 248 248 243 238 237 218 209 178 172 168 148 143 129 127 105 95 76 74 71 66 54 53 46 44 35 13 12 10
+</code></pre>
+<p>So we see that if we take out elements from front of PriorityDeque then we get elements in ascending order and if we pull out from end of PriorityDeque then we get elements in descending order.</p>
+<p>Voila! We have a Deque that can retrieve elements in ascending and descending order both at same time. FUN!</p>
+<p>Note: PriorityDeque is not thread safe. For concurrent version use PriorityBlockingDeque which extends BlockingDeque. PriorityBlockingDeque algorithm is exactly same as PriorityDeque with additional concurrency features.</p>
+<p>This is how PriorityBlockingDeque looks like:</p>
+<p><sup><sub>**click 'Download' at top right corner of code block for whole file</sub></sup></p>
+<pre data-src="/static/java/PriorityBlockingDeque.java" data-range="12,59" data-download-link=""></pre>
 
-<h3 id="application-context"><a href="/projects/01-application-context-util/"><img src="/static/images/context.jpeg" style="max-width: 5%;">  Application Context</a></h3>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Statically using Context (Map based) in Kotlin/Java</p>
-<hr>
+
+Suggestions for improvements are welcome.
+
+<div>
+<div class="container p-5">
+<nav>
+
+<ul>
+<li>
+<a href="/articles/javaEnumValidator/" title="Java Enum Validator" role="button" class="primary">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"></path>
+</svg> <small>Previous</small>
+</a>
+</li>
+</ul>
+
+<ul>
+<li>
+<a href="/articles/priorityexecutor/" title="PriorityExecutorService in Java" role="button" class="primary">
+<small>Next</small> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+</svg>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+
+</div>
+<div>
+    
+
+<section>
+<style>.utterances{ max-width: 1080px; }</style>
+<script src="https://utteranc.es/client.js" repo="funofprograming/funofprograming.github.io" issue-term="og:title" label="foparticlecomments" theme="github-light" crossorigin="anonymous" async="">
+</script>
+<noscript>Please enable JavaScript to view the comments powered by Utterances.</noscript>
+</section>
+
+
+</div>
 
 </heading-anchors>
 </div>
