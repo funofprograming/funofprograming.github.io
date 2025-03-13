@@ -24,12 +24,13 @@
 			"link": "/projects/"
 		},
 		{
-			"nav": "About",
-			"link": "/about/"
-		},
-		{
 			"nav": "Search",
 			"link": "/search/"
+		},
+		{
+			"nav": "About",
+			"link": "https://akshayjain7983.github.io/",
+			"target": "_blank"
 		}
 	],
 	"indexcss": "/static/css/index.css",
