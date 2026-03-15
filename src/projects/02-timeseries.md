@@ -123,6 +123,7 @@ class TestJavaTimeseriesEntry {
 }
 ```
 {% endtab %} 
+{% endtabber %}
 
 Timeseries
 {% tabber "tsTabs2", {"ts-kotlin2":"Kotlin", "ts-java2":"Java"} %}
@@ -1003,6 +1004,8 @@ class TestJavaTimeseries {
 }
 ```
 {% endtab %} 
+{% endtabber %} 
+
 
 MutableTimeseries
 {% tabber "tsTabs3", {"ts-kotlin3":"Kotlin", "ts-java3":"Java"} %}
