@@ -2026,6 +2026,7 @@ class TestJavaMutableTimeseries {
 }
 ```
 {% endtab %} 
+{% endtabber %}
 
 Above Junit showcase how to initialize and use all the methods of Timeseries and MutableTimeseries interfaces.
 
