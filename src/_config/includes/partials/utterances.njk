@@ -1,0 +1,18 @@
+{% if site.utterancesRepo %}
+{% css "utterances" %}
+.utterances{ max-width: 1080px; }
+{% endcss %}
+<section>
+<style>{% getBundle "css", "utterances" %}</style>
+<script src="https://utteranc.es/client.js"
+        repo="{{ ghrepo or site.fopghrepo }}"
+        issue-term="og:title"
+        label="{{ commentlabel }}"
+        theme="github-light"
+        crossorigin="anonymous"
+        async >
+</script>
+<noscript>Please enable JavaScript to view the comments powered by Utterances.</a></noscript>
+</section>
+
+{% endif %}

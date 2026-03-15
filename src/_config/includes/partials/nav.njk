@@ -1,0 +1,6 @@
+<navbar>
+  <nav class="container-fluid">
+    {% for n in site.navbar %}<div><a href="{{n.link}}" {% if(n.target) %} target="{{ n.target }}" {% endif %} >{{n.nav}}</a></div>{% endfor %}
+  </nav>
+</navbar>
+<hr />
