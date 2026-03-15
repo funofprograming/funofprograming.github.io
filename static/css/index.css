@@ -1,4 +1,4 @@
-pre.line-numbers .line-highlight {
+pre[class*="language-"].line-numbers.line-numbers {
   max-height: 700px;
 }
 
