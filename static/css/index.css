@@ -1,3 +1,7 @@
+pre.line-numbers .line-highlight {
+  max-height: 700px;
+}
+
 /* custom skip-to-content */
 .skip-to-content {
 	position: absolute;
