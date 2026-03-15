@@ -16,6 +16,7 @@ image: /static/images/timeseries.png
 
 Timeseries is a simple kotlin based library that provides a data structure to manage timeseries data.
 
+
 This library aims to provide a simple but efficient in-memory data structure for handling and manipulating timeseries data. Sure same can be achieved by using a simple NavigableMap but then one will have to code a lot of methods for timeseries handling. This library does that by providing implementations that use NavigableMap internally.
 
 Central interface of this library is **Timeseries**
@@ -36,6 +37,7 @@ Central interface of this library is **Timeseries**
 Check for latest versions here: [Releases](https://github.com/funofprograming/timeseries/releases)
 
 ### Code
+
 
 This library provides 2 interfaces namely [Timeseries](https://github.com/funofprograming/timeseries/blob/master/src/main/kotlin/io/github/funofprograming/timeseries/Timeseries.kt) which is immutable. And then a mutable version as [MutableTimeseries](https://github.com/funofprograming/timeseries/blob/master/src/main/kotlin/io/github/funofprograming/timeseries/MutableTimeseries.kt). 
 
