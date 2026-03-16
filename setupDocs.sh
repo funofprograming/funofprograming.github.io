@@ -1,11 +1,14 @@
 #!/bin/bash
 
-wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq && chmod +x /usr/local/bin/yq
+sudo apt install yq -y
 
 YAML_FILE=api-docs-config.yaml
 MAVEN_BASE_URL=https://repo1.maven.org/maven2
 
 len=$(yq '.docs | length' $YAML_FILE)
+
+echo "Total docs config found:$len"
+
 for ((i=0; i<len; i++)); do
     
     repo=$(yq ".docs[$i].repo" $YAML_FILE)
@@ -15,10 +18,13 @@ for ((i=0; i<len; i++)); do
     javadoc=$(yq ".docs[$i].version" $YAML_FILE)
     dokka=$(yq ".docs[$i].version" $YAML_FILE)
     
+    cd $GITHUB_WORKSPACE
+
     if [[ "$javadoc" == "true" ]]; then
-        javadocloc=./_site/apidocs/$repo/javadoc/$version/
+        javadocloc=$GITHUB_WORKSPACE/_site/apidocs/$repo/javadoc/$version/
         javadocfile=$artifactId-$version-javadoc.jar
         mavenUrl="$MAVEN_BASE_URL/$(echo "$groupId" | sed 's/\./\//g')/$artifactId/$version/$javadocfile"
+        echo "Setting up Javadoc from URL:$mavenUrl in location $javadocloc"
         mkdir -p $javadocloc
         cd $javadocloc
         wget $mavenUrl
@@ -28,9 +34,10 @@ for ((i=0; i<len; i++)); do
     fi
 
     if [[ "$dokka" == "true" ]]; then
-        dokkaloc=./_site/apidocs/$repo/dokka/$version/
+        dokkaloc=$GITHUB_WORKSPACE/_site/apidocs/$repo/dokka/$version/
         dokkafile=$artifactId-$version-dokka.jar
         mavenUrl="$MAVEN_BASE_URL/$(echo "$groupId" | sed 's/\./\//g')/$artifactId/$version/$dokkafile"
+        echo "Setting up Kotlindoc from URL:$mavenUrl in location $dokkaloc"
         mkdir -p $dokkaloc
         cd $dokkaloc
         wget $mavenUrl
