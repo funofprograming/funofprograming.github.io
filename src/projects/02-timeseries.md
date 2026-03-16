@@ -48,7 +48,7 @@ Following Junit classes show how to use these 3 interfaces.
 TimeseriesEntry
 {% tabber "tsTabs1", {"ts-kotlin1":"Kotlin", "ts-java1":"Java"} %}
 {% tab "ts-kotlin1" %}
-<pre id="TestTimeseriesEntry" data-src="https://github.com/funofprograming/timeseries/blob/master/src/test/kotlin/io/github/funofprograming/timeseries/TestTimeseriesEntry.kt" data-download-link></pre>
+<pre id="TestTimeseriesEntry" data-src="https://github.com/funofprograming/timeseries/raw/refs/heads/master/src/test/kotlin/io/github/funofprograming/timeseries/TestTimeseriesEntry.kt" data-download-link></pre>
 {% endtab %} 
 
 {% tab "ts-java1" %}
