@@ -1,9 +1,12 @@
 #!/bin/bash
 
-sudo apt install yq -y
+sudo apt install yq
 
 YAML_FILE=api-docs-config.yaml
 MAVEN_BASE_URL=https://repo1.maven.org/maven2
+API_DOCS_PATH=$GITHUB_WORKSPACE/_site/apidocs
+
+rm -rf $API_DOCS_PATH/*
 
 len=$(yq '.docs | length' $YAML_FILE)
 
@@ -11,40 +14,36 @@ echo "Total docs config found:$len"
 
 for ((i=0; i<len; i++)); do
     
-    repo=$(yq ".docs[$i].repo" $YAML_FILE)
-    groupId=$(yq ".docs[$i].group-id" $YAML_FILE)
-    artifactId=$(yq ".docs[$i].artifact-id" $YAML_FILE)
-    version=$(yq ".docs[$i].version" $YAML_FILE)
-    javadoc=$(yq ".docs[$i].version" $YAML_FILE)
-    dokka=$(yq ".docs[$i].version" $YAML_FILE)
+    repo=$(yq -r ".docs[$i].repo" $YAML_FILE)
+    groupId=$(yq -r ".docs[$i].groupId" $YAML_FILE)
+    artifactId=$(yq -r ".docs[$i].artifactId" $YAML_FILE)
+    version=$(yq -r ".docs[$i].version" $YAML_FILE)
+    javadoc=$(yq -r ".docs[$i].javadoc" $YAML_FILE)
+    dokka=$(yq -r ".docs[$i].dokka" $YAML_FILE)
     
-    cd $GITHUB_WORKSPACE
-
     if [[ "$javadoc" == "true" ]]; then
-        javadocloc=$GITHUB_WORKSPACE/_site/apidocs/$repo/javadoc/$version/
+        javadocloc=$API_DOCS_PATH/$repo/javadoc/$version/
         javadocfile=$artifactId-$version-javadoc.jar
         mavenUrl="$MAVEN_BASE_URL/$(echo "$groupId" | sed 's/\./\//g')/$artifactId/$version/$javadocfile"
-        echo "Setting up Javadoc from URL:$mavenUrl in location $javadocloc"
+        echo "Setting up Javadoc from URL: $mavenUrl in location: $javadocloc"
         mkdir -p $javadocloc
         cd $javadocloc
-        wget $mavenUrl
-        unzip $javadocfile
+        wget -q $mavenUrl
+        unzip -qq $javadocfile
         rm -rf $javadocfile
         rm -rf META-INF
     fi
 
     if [[ "$dokka" == "true" ]]; then
-        dokkaloc=$GITHUB_WORKSPACE/_site/apidocs/$repo/dokka/$version/
+        dokkaloc=$API_DOCS_PATH/$repo/dokka/$version/
         dokkafile=$artifactId-$version-dokka.jar
         mavenUrl="$MAVEN_BASE_URL/$(echo "$groupId" | sed 's/\./\//g')/$artifactId/$version/$dokkafile"
         echo "Setting up Kotlindoc from URL:$mavenUrl in location $dokkaloc"
         mkdir -p $dokkaloc
         cd $dokkaloc
-        wget $mavenUrl
-        unzip $dokkafile
+        wget -q $mavenUrl
+        unzip -qq $dokkafile
         rm -rf $dokkafile
         rm -rf META-INF
     fi
-
-
 done
