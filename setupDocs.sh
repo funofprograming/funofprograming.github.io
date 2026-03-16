@@ -2,7 +2,7 @@
 
 sudo apt install yq
 
-YAML_FILE=api-docs-config.yaml
+YAML_FILE=$GITHUB_WORKSPACE/api-docs-config.yaml
 MAVEN_BASE_URL=https://repo1.maven.org/maven2
 API_DOCS_PATH=$GITHUB_WORKSPACE/_site/apidocs
 
@@ -14,6 +14,7 @@ echo "Total docs config found:$len"
 
 for ((i=0; i<len; i++)); do
     
+    cd $GITHUB_WORKSPACE
     repo=$(yq -r ".docs[$i].repo" $YAML_FILE)
     groupId=$(yq -r ".docs[$i].groupId" $YAML_FILE)
     artifactId=$(yq -r ".docs[$i].artifactId" $YAML_FILE)
