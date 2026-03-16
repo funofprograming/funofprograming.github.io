@@ -38,7 +38,7 @@ for ((i=0; i<len; i++)); do
         dokkaloc=$API_DOCS_PATH/$repo/dokka/$version/
         dokkafile=$artifactId-$version-dokka.jar
         mavenUrl="$MAVEN_BASE_URL/$(echo "$groupId" | sed 's/\./\//g')/$artifactId/$version/$dokkafile"
-        echo "Setting up Kotlindoc from URL:$mavenUrl in location $dokkaloc"
+        echo "Setting up Kotlindoc from URL: $mavenUrl in location: $dokkaloc"
         mkdir -p $dokkaloc
         cd $dokkaloc
         wget -q $mavenUrl

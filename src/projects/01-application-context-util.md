@@ -225,11 +225,17 @@ public class TestApplicationContext{
 {% endtab %}   
 {% endtabber %}
 
+## API DOCS
+| Application Context Util |  Kotlin  |  Java  |
+|:------------------------:|:--------:|:------:|
+|          1.0.0           |   {% apidocurl "application-context-util-1.0.0","Kotlin" %}   |  {% apidocurl "application-context-util-1.0.0","Java" %}    |
+
 ## Compatibility matrix
 
-| Application Context Util |  Java  | Kotlin-Std | Kotlin-Coroutines | 
-|:------------------------:|:------:|:----------:|:-----------------:|
-|          1.0.0           |   21   |  2.1.10    |     1.10.1        |
+| Application Context Util | Kotlin-Std | Kotlin-Coroutines |  Java  |
+|:------------------------:|:----------:|:-----------------:|:------:|
+|          1.0.0           |  2.3.10    |     1.10.1        |   21   |
+
 
 ## License
 
