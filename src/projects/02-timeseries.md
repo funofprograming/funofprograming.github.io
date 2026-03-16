@@ -2033,11 +2033,16 @@ class TestJavaMutableTimeseries {
 
 Above Junit showcase how to initialize and use all the methods of Timeseries and MutableTimeseries interfaces.
 
+## API DOCS
+| Timeseries |  Kotlin  |  Java  |
+|:----------:|:--------:|:------:|
+|   1.0.0    |   {% apidocurl "timeseries-1.0.0","Kotlin" %}   |  {% apidocurl "timeseries-1.0.0","Java" %}    |
+
 ## Compatibility matrix
 
-| Timeseries |  Java  | Kotlin-Std |
-|:----------:|:------:|:----------:|
-|   1.0.0    |   21   |  2.3.10    |
+| Timeseries | Kotlin-Std |  Java  |
+|:----------:|:----------:|:------:|
+|   1.0.0    |  2.3.10    |   21   |
 
 ## License
 

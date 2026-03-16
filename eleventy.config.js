@@ -8,6 +8,7 @@ import pluginFilters from "./filters.js";
 import pluginShortcodes from "./shortcode.js";
 import CleanCSS from "clean-css";
 import { execSync } from 'child_process';
+import { apidocurl } from "./api-docs-url.js"
 
 export default function (eleventyConfig) {
 
@@ -40,6 +41,7 @@ export default function (eleventyConfig) {
 
     eleventyConfig.addPairedShortcode("tabber", tabber)
     eleventyConfig.addPairedShortcode("tab", tab)
+    eleventyConfig.addShortcode("apidocurl", apidocurl)
     eleventyConfig.addShortcode("currentBuildDate", () => {
 		return (new Date()).toISOString();
 	});

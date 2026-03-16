@@ -1,5 +1,13 @@
 docs:
-  - repo: funofprograming/timeseries
+  - id: application-context-util-1.0.0
+    repo: funofprograming/application-context-util
+    groupId: io.github.funofprograming
+    artifactId: application-context-util
+    version: 1.0.0
+    javadoc: true
+    dokka: true
+  - id: timeseries-1.0.0
+    repo: funofprograming/timeseries
     groupId: io.github.funofprograming
     artifactId: timeseries
     version: 1.0.0
