@@ -140,7 +140,40 @@ $( '#tsTabs1' ).tabs();
 <p><li><a href="#ts-java1">Java</a></li></p>
 <p></p></ul><p></p>
 <p></p><div id="ts-kotlin1"><p></p>
-<pre id="TestTimeseriesEntry" data-src="https://github.com/funofprograming/timeseries/raw/refs/heads/master/src/test/kotlin/io/github/funofprograming/timeseries/TestTimeseriesEntry.kt" data-download-link=""></pre>
+<pre><code class="language-kotlin">package io.github.funofprograming.timeseries
+
+import io.github.funofprograming.timeseries.impl.TimeseriesImpl
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.Assertions.*
+import java.time.Instant
+import java.util.UUID
+
+class TestTimeseriesEntry {
+
+    @Test
+    fun testInitializeTimeseriesEntry_nullEventId() {
+        val instant = Instant.now()
+        val event = 1
+        val timeseriesEntry: TimeseriesEntry&lt;Int&gt; = timeseriesEntryOf&lt;Int&gt;(instant, event)
+        assertNotNull(timeseriesEntry)
+        assertEquals(instant, timeseriesEntry.eventInstant)
+        assertEquals(event, timeseriesEntry.event)
+        assertNull(timeseriesEntry.eventId)
+    }
+
+    @Test
+    fun testInitializeTimeseriesEntry_nonNullEventId() {
+        val instant = Instant.now()
+        val event = 1
+        val eventId = UUID.randomUUID()
+        val timeseriesEntry: TimeseriesEntry&lt;Int&gt; = timeseriesEntryOf&lt;Int&gt;(instant, event, eventId)
+        assertNotNull(timeseriesEntry)
+        assertEquals(instant, timeseriesEntry.eventInstant)
+        assertEquals(event, timeseriesEntry.event)
+        assertEquals(eventId, timeseriesEntry.eventId)
+    }
+}
+</code></pre>
 <p></p></div><p></p>
 <p></p><div id="ts-java1"><p></p>
 <pre><code class="language-java">package io.github.funofprograming.timeseries;
