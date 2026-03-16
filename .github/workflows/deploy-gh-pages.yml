@@ -23,6 +23,11 @@ jobs:
         run: |
           npm install
           npm run publish
+
+      - name: Setup API docs
+        run: |
+          chmod 755 setupDocs.sh
+          ./setupDocs.sh
       
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
