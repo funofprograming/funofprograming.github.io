@@ -1,0 +1,1 @@
+sourceset_dependencies='{"application-context-util/JVM":[]}'

@@ -1,1 +1,0 @@
-var packageSearchIndex = [{"l":"io.github.funofprograming.timeseries","url":"io/github/funofprograming/timeseries/package-summary.html"}, {"l":"io.github.funofprograming.timeseries.impl","url":"io/github/funofprograming/timeseries/impl/package-summary.html"}, {"l":"All packages","url":"index.html"}]

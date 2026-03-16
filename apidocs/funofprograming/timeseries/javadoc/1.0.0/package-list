@@ -1,5 +1,0 @@
-$dokka.format:javadoc-v1
-$dokka.linkExtension:html
-
-io.github.funofprograming.timeseries
-io.github.funofprograming.timeseries.impl

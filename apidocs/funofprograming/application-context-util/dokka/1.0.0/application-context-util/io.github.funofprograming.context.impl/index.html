@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>io.github.funofprograming.context.impl</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../index.html">
+                    application-context-util
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active=""
+                        data-filter="application-context-util/JVM">JVM</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id="application-context-util/JVM"
+                                       data-filter="application-context-util/JVM"/>
+                                <span class="checkbox--icon"></span>
+                                JVM
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    application-context-util
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="application-context-util::io.github.funofprograming.context.impl////PointingToDeclaration//956119295">
+  <div class="breadcrumbs"><a href="../../index.html">application-context-util</a><span class="delimiter">/</span><span class="current">io.github.funofprograming.context.impl</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button><button class="section-tab" data-togglable="FUNCTION,EXTENSION_FUNCTION">Functions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="">Types</h2>
+        <div class="table"><a data-name="-102099906%2FClasslikes%2F956119295" anchor-label="AbstractApplicationContextHolderStrategy" id="-102099906%2FClasslikes%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-abstract-application-context-holder-strategy/index.html"><span>Abstract</span><wbr></wbr><span>Application</span><wbr></wbr><span>Context</span><wbr></wbr><span>Holder</span><wbr></wbr><span><span>Strategy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-102099906%2FClasslikes%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-abstract-application-context-holder-strategy/index.html">AbstractApplicationContextHolderStrategy</a> : <a href="../io.github.funofprograming.context/-application-context-holder-strategy/index.html">ApplicationContextHolderStrategy</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1966334758%2FClasslikes%2F956119295" anchor-label="AbstractApplicationContextMergeStrategy" id="-1966334758%2FClasslikes%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-abstract-application-context-merge-strategy/index.html"><span>Abstract</span><wbr></wbr><span>Application</span><wbr></wbr><span>Context</span><wbr></wbr><span>Merge</span><wbr></wbr><span><span>Strategy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1966334758%2FClasslikes%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">class </span><a href="-abstract-application-context-merge-strategy/index.html">AbstractApplicationContextMergeStrategy</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">keys<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../io.github.funofprograming.context/-key/index.html">Key</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../io.github.funofprograming.context/-application-context-merge-strategy/index.html">ApplicationContextMergeStrategy</a></div><div class="brief "><p class="paragraph">Abstract implementation of {@linkplain ApplicationContextMergeStrategy}</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1401714431%2FClasslikes%2F956119295" anchor-label="ApplicationContextImpl" id="1401714431%2FClasslikes%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-application-context-impl/index.html"><span>Application</span><wbr></wbr><span>Context</span><wbr></wbr><span><span>Impl</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1401714431%2FClasslikes%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-application-context-impl/index.html">ApplicationContextImpl</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">permittedKeys<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../io.github.funofprograming.context/-key/index.html">Key</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="../io.github.funofprograming.context/-application-context/index.html">ApplicationContext</a></div><div class="brief "><p class="paragraph">Plain vanilla implementation of {@linkplain ApplicationContext}</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1572685210%2FClasslikes%2F956119295" anchor-label="ApplicationContextMergeIgnoreStrategy" id="-1572685210%2FClasslikes%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-application-context-merge-ignore-strategy/index.html"><span>Application</span><wbr></wbr><span>Context</span><wbr></wbr><span>Merge</span><wbr></wbr><span>Ignore</span><wbr></wbr><span><span>Strategy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1572685210%2FClasslikes%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">class </span><a href="-application-context-merge-ignore-strategy/index.html">ApplicationContextMergeIgnoreStrategy</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">keys<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../io.github.funofprograming.context/-key/index.html">Key</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-abstract-application-context-merge-strategy/index.html">AbstractApplicationContextMergeStrategy</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1157381735%2FClasslikes%2F956119295" anchor-label="ApplicationContextMergeOverwriteStrategy" id="-1157381735%2FClasslikes%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-application-context-merge-overwrite-strategy/index.html"><span>Application</span><wbr></wbr><span>Context</span><wbr></wbr><span>Merge</span><wbr></wbr><span>Overwrite</span><wbr></wbr><span><span>Strategy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1157381735%2FClasslikes%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">class </span><a href="-application-context-merge-overwrite-strategy/index.html">ApplicationContextMergeOverwriteStrategy</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">keys<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../io.github.funofprograming.context/-key/index.html">Key</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-abstract-application-context-merge-strategy/index.html">AbstractApplicationContextMergeStrategy</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-494904312%2FClasslikes%2F956119295" anchor-label="ConcurrentApplicationContextImpl" id="-494904312%2FClasslikes%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-concurrent-application-context-impl/index.html"><span>Concurrent</span><wbr></wbr><span>Application</span><wbr></wbr><span>Context</span><wbr></wbr><span><span>Impl</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-494904312%2FClasslikes%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-concurrent-application-context-impl/index.html">ConcurrentApplicationContextImpl</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">permittedKeys<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../io.github.funofprograming.context/-key/index.html">Key</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="-application-context-impl/index.html">ApplicationContextImpl</a>, <a href="../io.github.funofprograming.context/-concurrent-application-context/index.html">ConcurrentApplicationContext</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="2112340697%2FClasslikes%2F956119295" anchor-label="GlobalContextHolderStrategy" id="2112340697%2FClasslikes%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-global-context-holder-strategy/index.html"><span>Global</span><wbr></wbr><span>Context</span><wbr></wbr><span>Holder</span><wbr></wbr><span><span>Strategy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2112340697%2FClasslikes%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">class </span><a href="-global-context-holder-strategy/index.html">GlobalContextHolderStrategy</a> : <a href="-abstract-application-context-holder-strategy/index.html">AbstractApplicationContextHolderStrategy</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="714161997%2FClasslikes%2F956119295" anchor-label="InvalidContextException" id="714161997%2FClasslikes%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-invalid-context-exception/index.html"><span>Invalid</span><wbr></wbr><span>Context</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="714161997%2FClasslikes%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">class </span><a href="-invalid-context-exception/index.html">InvalidContextException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span> : <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html">IllegalStateException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="739711485%2FClasslikes%2F956119295" anchor-label="InvalidKeyException" id="739711485%2FClasslikes%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-invalid-key-exception/index.html"><span>Invalid</span><wbr></wbr><span>Key</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="739711485%2FClasslikes%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">class </span><a href="-invalid-key-exception/index.html">InvalidKeyException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span> : <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalArgumentException.html">IllegalArgumentException</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-163581007%2FClasslikes%2F956119295" anchor-label="ThreadLocalContextHolderStrategy" id="-163581007%2FClasslikes%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-thread-local-context-holder-strategy/index.html"><span>Thread</span><wbr></wbr><span>Local</span><wbr></wbr><span>Context</span><wbr></wbr><span>Holder</span><wbr></wbr><span><span>Strategy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-163581007%2FClasslikes%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">class </span><a href="-thread-local-context-holder-strategy/index.html">ThreadLocalContextHolderStrategy</a> : <a href="-abstract-application-context-holder-strategy/index.html">AbstractApplicationContextHolderStrategy</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-109019038%2FFunctions%2F956119295" anchor-label="clearGlobalContext" id="-109019038%2FFunctions%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear-global-context.html"><span>clear</span><wbr></wbr><span>Global</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-109019038%2FFunctions%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">fun </span><a href="clear-global-context.html"><span class="token function">clearGlobalContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../io.github.funofprograming.context/-application-context/index.html">ApplicationContext</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Clear Global context for given name and return back the context</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="761414086%2FFunctions%2F956119295" anchor-label="clearThreadLocalContext" id="761414086%2FFunctions%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="clear-thread-local-context.html"><span>clear</span><wbr></wbr><span>Thread</span><wbr></wbr><span>Local</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="761414086%2FFunctions%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">fun </span><a href="clear-thread-local-context.html"><span class="token function">clearThreadLocalContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../io.github.funofprograming.context/-application-context/index.html">ApplicationContext</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Clear ThreadLocal context for given name and return back the context</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-595018798%2FFunctions%2F956119295" anchor-label="existsGlobalContext" id="-595018798%2FFunctions%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="exists-global-context.html"><span>exists</span><wbr></wbr><span>Global</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-595018798%2FFunctions%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">fun </span><a href="exists-global-context.html"><span class="token function">existsGlobalContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">permittedKeys<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../io.github.funofprograming.context/-key/index.html">Key</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Check if Global context with given name and permittedKeys exists</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="468270628%2FFunctions%2F956119295" anchor-label="existsThreadLocalContext" id="468270628%2FFunctions%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="exists-thread-local-context.html"><span>exists</span><wbr></wbr><span>Thread</span><wbr></wbr><span>Local</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="468270628%2FFunctions%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">fun </span><a href="exists-thread-local-context.html"><span class="token function">existsThreadLocalContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">permittedKeys<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../io.github.funofprograming.context/-key/index.html">Key</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Check if ThreadLocal context with given name and permittedKeys exists</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-233432899%2FFunctions%2F956119295" anchor-label="getGlobalContext" id="-233432899%2FFunctions%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-global-context.html"><span>get</span><wbr></wbr><span>Global</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-233432899%2FFunctions%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-global-context.html"><span class="token function">getGlobalContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../io.github.funofprograming.context/-application-context/index.html">ApplicationContext</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Get a Global context for given name. If not available then create one, set in holder and return back.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-global-context.html"><span class="token function">getGlobalContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">permittedKeys<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../io.github.funofprograming.context/-key/index.html">Key</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../io.github.funofprograming.context/-application-context/index.html">ApplicationContext</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Same as getGlobalContext but with permittedKeys. If context already exist with different set of keys then this method should throw <a href="-invalid-key-exception/index.html">InvalidKeyException</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="114222197%2FFunctions%2F956119295" anchor-label="getThreadLocalContext" id="114222197%2FFunctions%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-thread-local-context.html"><span>get</span><wbr></wbr><span>Thread</span><wbr></wbr><span>Local</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="114222197%2FFunctions%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-thread-local-context.html"><span class="token function">getThreadLocalContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../io.github.funofprograming.context/-application-context/index.html">ApplicationContext</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Get a ThreadLocal context for given name. If not available then create one, set in holder and return back.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="get-thread-local-context.html"><span class="token function">getThreadLocalContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">name<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">permittedKeys<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-set/index.html">Set</a><span class="token operator">&lt;</span><a href="../io.github.funofprograming.context/-key/index.html">Key</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span><span class="token operator">?</span></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../io.github.funofprograming.context/-application-context/index.html">ApplicationContext</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Same as getThreadLocalContext but with permittedKeys. If context already exist with different set of keys then this method should throw <a href="-invalid-key-exception/index.html">InvalidKeyException</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-107717898%2FFunctions%2F956119295" anchor-label="initCoroutineScopeForApplicationContext" id="-107717898%2FFunctions%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="init-coroutine-scope-for-application-context.html"><span>init</span><wbr></wbr><span>Coroutine</span><wbr></wbr><span>Scope</span><wbr></wbr><span>For</span><wbr></wbr><span>Application</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-107717898%2FFunctions%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="init-coroutine-scope-for-application-context.html"><span class="token function">initCoroutineScopeForApplicationContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">coroutineScope<span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><span data-unresolved-link="kotlinx.coroutines/CoroutineScope///PointingToDeclaration/">CoroutineScope</span></div><div class="brief "><p class="paragraph">Initialize a new CoroutineScope which can hold ApplicationContext for all coroutines that use this scope</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1045739900%2FFunctions%2F956119295" anchor-label="setGlobalContext" id="1045739900%2FFunctions%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-global-context.html"><span>set</span><wbr></wbr><span>Global</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1045739900%2FFunctions%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-global-context.html"><span class="token function">setGlobalContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">applicationContext<span class="token operator">: </span><a href="../io.github.funofprograming.context/-application-context/index.html">ApplicationContext</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Set any externally created Global context into the context holder strategy. If any context with this name already exist then this method should throw <a href="-invalid-context-exception/index.html">InvalidContextException</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-70594802%2FFunctions%2F956119295" anchor-label="setThreadLocalContext" id="-70594802%2FFunctions%2F956119295" data-filterable-set="application-context-util/JVM"></a>
+          <div class="table-row" data-filterable-current="application-context-util/JVM" data-filterable-set="application-context-util/JVM">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-thread-local-context.html"><span>set</span><wbr></wbr><span>Thread</span><wbr></wbr><span>Local</span><wbr></wbr><span><span>Context</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-70594802%2FFunctions%2F956119295"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable="application-context-util/JVM"><div class="symbol monospace"><span class="token keyword">fun </span><a href="set-thread-local-context.html"><span class="token function">setThreadLocalContext</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">applicationContext<span class="token operator">: </span><a href="../io.github.funofprograming.context/-application-context/index.html">ApplicationContext</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Set any externally created ThreadLocal context into the context holder strategy. If any context with this name already exist then this method should throw <a href="-invalid-context-exception/index.html">InvalidContextException</a></p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

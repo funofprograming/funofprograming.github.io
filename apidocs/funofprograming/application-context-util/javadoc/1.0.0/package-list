@@ -1,0 +1,6 @@
+$dokka.format:javadoc-v1
+$dokka.linkExtension:html
+$dokka.location:io.github.funofprograming.context/Key.Companion///PointingToDeclaration/io/github/funofprograming/context/Key.Companion.html
+$dokka.location:io.github.funofprograming.context/KeyType.Companion///PointingToDeclaration/io/github/funofprograming/context/KeyType.Companion.html
+io.github.funofprograming.context
+io.github.funofprograming.context.impl
