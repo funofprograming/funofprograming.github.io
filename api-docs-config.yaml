@@ -1,7 +1,7 @@
 docs:
   - repo: funofprograming/timeseries
-    group-id: io.github.funofprograming
-    artifact-id: timeseries
+    groupId: io.github.funofprograming
+    artifactId: timeseries
     version: 1.0.0
     javadoc: true
     dokka: true
